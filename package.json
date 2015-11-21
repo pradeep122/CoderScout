@@ -1,6 +1,6 @@
 {
-  "name": "meantest",
-  "version": "0.0.0",
+  "name": "CoderScout",
+  "version": "0.0.1",
   "main": "server/app.js",
   "dependencies": {
     "express": "~4.9.0",
@@ -74,7 +74,7 @@
     "should": "~3.3.1"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": "0.12.7"
   },
   "scripts": {
     "start": "node server/app.js",
