@@ -1,35 +1,36 @@
-<div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-    <div class="interviewsheading width100">
-        <h3 class="interviewsh3 ">Instructions</h3>
-    </div>
-    <div>
-        <ul>
-            <li>If this is your first time at Remote Interview, we recommend you try our sample test first to get familiar with the test environment: {{testName}}.</li>
-            <li>The screening test has {{questionCount}} programming question(s).</li>
-            <li>The programming questions can be solved in no programming languages.</li>
-            <li>You have up to 90 minutes to complete the test. Once you start, you should complete the test in a single attempt.</li>
-            <li>Your websession will be maintained if you received the automated email invite, you can use that link to resume your test but please try not to close the window/tab during the test.</li>
-            <li>Make sure that your solution handles all possible corner cases and handles large inputs efficiently. Assume nothing, trust no one.</li>
-            <li>May the force be with you!</li>
-        </ul>
-    </div>
-    <div>
-        <form ajaxForm="true">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="text-center bordertopsolid padding">
-                    <b>Please enter the following information correctly.</b>
+<div class="container-fluid">
+    <div class="row">
+        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
+            <div>
+                <div>
+                    <h3>Instructions</h3>
                 </div>
-                <div id="emailbox" class="form-group col-xs-4 col-xs-offset-4" style="">
-                    <label class="required">Email Address</label>
-                    <input type="text" name="email" id="email" class="form-control input-md text-center" placeholder="name@domain.com">
-                </div>
+                <ol class="collection" style="list-style-type:disc">
+                    <li class="collection-item">If this is your first time at Remote Interview, we recommend you try our sample test first to get familiar with the test environment: {{testName}}.</li>
+                    <li class="collection-item">The screening test has {{questionCount}} programming question(s).</li>
+                    <li class="collection-item">The programming questions can be solved in no programming languages.</li>
+                    <li class="collection-item">You have up to {{test.duration}} minutes to complete the test. Once you start, you should complete the test in a single attempt.</li>
+                    <li class="collection-item">Your websession will be maintained if you received the automated email invite, you can use that link to resume your test but please try not to close the window/tab during the test.</li>
+                    <li class="collection-item">Make sure that your solution handles all possible corner cases and handles large inputs efficiently. Assume nothing, trust no one.</li>
+                    <li class="collection-item">May the force be with you!</li>
+                </ol>
             </div>
-            <div class="text-center">
-                <button type="submit" id="button_startmyTest" role="button" data-toggle="modal" class="btn btn-primary btn-createinterview btn-md">
-                    <span>Begin Test</span>
-                    <i class="glyphicon glyphicon-chevron-right"></i>
-                </button>
+            <div>
+                <form ajaxForm="true">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="text-center bordertopsolid padding">
+                            <b>Please enter the following information correctly.</b>
+                        </div>
+                        <div id="emailbox" class="form-group col-xs-4 col-xs-offset-4" style="">
+                            <label class="required">Email Address</label>
+                            <input type="text" name="email" id="email" class="form-control input-md text-center" placeholder="name@domain.com" ng-model="userEmail" ng-change="validateEmail();">
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <a class="waves-effect waves-light btn">Begin Test</a>
+                    </div>
             </div>
+            </form>
+        </div>
     </div>
-    </form>
 </div>
