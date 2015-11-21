@@ -29,3 +29,29 @@ Thing.find({}).remove(function() {
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
   });
 });
+
+var Interviewer = require('../api/interviewer/interviewer.model');
+
+Interviewer.find({}).remove(function () {
+  Interviewer.create({
+    email: 'pradeep122@gmail.com',
+    password: 'pa88w0rd',
+    firstName: 'Pradeep',
+    lastName: 'Dantuluri'
+  },{
+    email: 'bhavyalatha26@gmail.com',
+    password: 'pa88w0rd',
+    firstName: 'BhavyaLatha',
+    lastName: 'Bhandaru'
+  },{
+    email: 'iswetha522@gmail.com',
+    password: 'pa88w0rd',
+    firstName: 'Swetha',
+    lastName: 'Kalidindi'
+  },{
+    email: 'camal4u@gmail.com',
+    password: 'pa88w0rd',
+    firstName: 'Kamal',
+    lastName: 'Konisi'
+  });
+});
