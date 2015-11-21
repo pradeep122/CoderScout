@@ -4,6 +4,63 @@
  */
 
 'use strict';
+
+
+var Question = require('../api/question/question.model');
+
+Question.find({}).remove(function() {
+  Question.create({
+    description : 'C Program to Check Whether a Number is Even or Odd',
+    solution :  '#include <stdio.h>' + 
+                'int main(){' + 
+                '      int num;' + 
+                '      printf("Enter an integer you want to check: ");' + 
+                '      scanf("%d",&num);' + 
+                '      if((num%2)==0)      /* Checking whether remainder is 0 or not. */' + 
+                '           printf("%d is even.",num);' + 
+                '      else' + 
+                '           printf("%d is odd.",num);' + 
+                '      return 0;' + 
+                '}',
+    testCases : [{
+      input : '25',
+      output : 'Enter an integer you want to check: 25' +
+                '25 is odd.',
+      weightage : 50
+    }],
+    createdBy : 'iswetha522@gmail.com'
+  }, {
+    description : 'C Program to Check Whether a Number is Palindrome or Not',
+    solution :  '#include <stdio.h>' + 
+                'int main()' + 
+                '{' + 
+                '  int n, reverse=0, rem,temp;' + 
+                '  printf("Enter an integer: ");' + 
+                '  scanf("%d", &n);' + 
+                '  temp=n;' + 
+                '  while(temp!=0)' + 
+                '  {' + 
+                '     rem=temp%10;' + 
+                '     reverse=reverse*10+rem;' + 
+                '     temp/=10;' + 
+                '  }  ' + 
+                '  if(reverse==n)  ' + 
+                '      printf("%d is a palindrome.",n);' + 
+                '  else' + 
+                '      printf("%d is not a palindrome.",n);' + 
+                '  return 0;' + 
+                '}',
+    testCases : [{
+      input : '12321',
+      output : 'Enter an integer: 12321' + 
+                '12321 is a palindrome.',
+      weightage : 50
+    }],
+    createdBy : 'pradeep122@gmail.com',
+    score: 100
+  });
+});
+
 var Invitation = require('../api/invitation/invitation.model');
 
 Invitation.find({}).remove(function() {
