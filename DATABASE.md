@@ -1,4 +1,6 @@
-## DATABASE MODELLING
+# DATABASE MODELLING
+
+Applicant
 
     applicant : {
         id : string
@@ -19,10 +21,11 @@
             }],
             feedback:string
             valid:boolean
-    },
-    invitedBy: 
+        },
+        invitedBy: 
     }
 
+Interviewer
 
     interviewer : {
         id:string
@@ -34,19 +37,23 @@
         
     }
 
+Test
+
     test : {
         id: string
         invitations: [{
             invitationId:string
-    }],
-    questions : [{
-        questionId:string
-    }],
-    startTime:string
-    endTime:string
-    duration:number
-    createdBy: string
+        }],
+        questions : [{
+            questionId:string
+        }],
+        startTime:string
+        endTime:string
+        duration:number
+        createdBy: string
     }
+
+Invitation
 
     invitation : {
         id:string,
@@ -54,6 +61,8 @@
         accessKey:string    
         createdBy:string
     }
+
+Question
 
     question: {
         id:string
@@ -63,7 +72,7 @@
             input : 
             output: 
             weightage: 
-    }]
+        }]
         createdBy: string
         score : 50
         info:{}
