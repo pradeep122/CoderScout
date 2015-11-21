@@ -4,6 +4,19 @@
  */
 
 'use strict';
+var Invitation = require('../api/invitation/invitation.model');
+
+Invitation.find({}).remove(function() {
+  Invitation.create({
+    email : 'saruk589@gmail.com',
+    accessKey : 'saruk',
+    createdBy : 'iswetha522@gmail.com'
+  }, {
+    email : 'abc123@gmail.com',
+    accessKey : 'abc123',
+    createdBy : 'pradeep122@gmail.com'
+  });
+});
 
 var Thing = require('../api/thing/thing.model');
 
