@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meantestApp')
+angular.module('coderScout')
   .factory('Modal', function ($rootScope, $modal) {
     /**
      * Opens a modal

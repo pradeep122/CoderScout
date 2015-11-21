@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meantestApp', [
+angular.module('coderScout', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
@@ -8,8 +8,13 @@ angular.module('meantestApp', [
   'ui.bootstrap'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    $stateProvider.state("welcome", {
+      url : "/welcome",
+      templateUrl : "app/components/welcome/welcome.html",
+      controller : "welcomeCtrl"
+    });
     $urlRouterProvider
-      .otherwise('/');
+      .otherwise('/welcome');
 
     $locationProvider.html5Mode(true);
   });

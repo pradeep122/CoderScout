@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('meantestApp')
+angular.module('coderScout')
   .controller('NavbarCtrl', function ($scope, $location) {
     $scope.menu = [{
       'title': 'Home',
