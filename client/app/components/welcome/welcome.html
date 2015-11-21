@@ -16,21 +16,20 @@
                 </ol>
             </div>
             <div>
-                <form ajaxForm="true">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                        <div class="text-center bordertopsolid padding">
-                            <b>Please enter the following information correctly.</b>
-                        </div>
-                        <div id="emailbox" class="form-group col-xs-4 col-xs-offset-4" style="">
-                            <label class="required">Email Address</label>
-                            <input type="text" name="email" id="email" class="form-control input-md text-center" placeholder="name@domain.com" ng-model="userEmail" ng-change="validateEmail();">
-                        </div>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="text-center bordertopsolid padding">
+                        <b>Please enter the following information correctly.</b>
                     </div>
-                    <div class="text-center">
-                        <a class="waves-effect waves-light btn">Begin Test</a>
+                    <div id="emailbox" class="form-group col-xs-4 col-xs-offset-4" style="">
+                        <label class="required">Email Address</label>
+                        <input type="text" name="email" id="email" class="form-control input-md text-center" placeholder="name@domain.com" ng-model="userEmail" ng-change="validateEmail();" />
+                        <label data-error="wrong" ng-if="errorMsg">Invalid Email</label>
                     </div>
+                </div>
+                <div class="text-center">
+                    <button class="waves-effect waves-light btn" ng-disabled="errorMsg" ng-click="beginTestReq()">Begin Test</button>
+                </div>
             </div>
-            </form>
         </div>
     </div>
 </div>

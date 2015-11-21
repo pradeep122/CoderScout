@@ -9,7 +9,7 @@ angular.module('coderScout', [
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider.state("welcome", {
-            url: "/welcome",
+            url: "/welcome/:access_key",
             templateUrl: "app/components/welcome/welcome.html",
             controller: "welcomeCtrl"
         });
