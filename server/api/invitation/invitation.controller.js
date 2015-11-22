@@ -22,7 +22,7 @@ function sendEmail(email, key) {
     subject: 'Invitation to Online Programming Screen Test - CoderScout',
     text: 'Hello , \n' +
       ' You have been invited to appear for an Online Programming Screen Test for Yantranet. \n' +
-      ' Please go to http://coderscout.io/welcome/' + key + '  to access the Test.\n'
+      ' Please go to http://coderscout.co/welcome/' + key + '  to access the Test.\n'
   }, function(err, json) {
     if (err) {
       return console.error(err);
