@@ -14,7 +14,8 @@
     "font-awesome": ">=4.1.0",
     "lodash": "~2.4.1",
     "angular-ui-router": "~0.2.15",
-    "Materialize": "materialize#~0.97.3"
+    "Materialize": "materialize#~0.97.3",
+    "underscore": "~1.8.3"
   },
   "devDependencies": {
     "angular-mocks": ">=1.2.*",
