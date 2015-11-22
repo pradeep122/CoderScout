@@ -13,6 +13,10 @@ angular.module('coderScout', [
             url: "/welcome/:inviteId",
             templateUrl: "app/components/welcome/welcome.html",
             controller: "welcomeCtrl"
+        }).state("exam", {
+            url: "/exam",
+            templateUrl: "app/components/exam/exam.html",
+            controller: "examCtrl"
         }).state("error", {
             url: "/error/:code",
             templateUrl: "app/components/error/error.html",
