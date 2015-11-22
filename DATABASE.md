@@ -58,8 +58,9 @@ Invitation
     invitation : {
         id:string,
         email: string
-        accessKey:string    
+        cookie : string
         createdBy:string
+        testId : string
     }
 
 Question

@@ -66,11 +66,11 @@ var Invitation = require('../api/invitation/invitation.model');
 Invitation.find({}).remove(function() {
   Invitation.create({
     email : 'saruk589@gmail.com',
-    accessKey : 'saruk',
+    cookie : 'saru',
     createdBy : 'iswetha522@gmail.com'
   }, {
     email : 'abc123@gmail.com',
-    accessKey : 'abc123',
+    cookie : 'abc123',
     createdBy : 'pradeep122@gmail.com'
   });
 });
