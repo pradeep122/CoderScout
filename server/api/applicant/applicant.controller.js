@@ -32,8 +32,32 @@ exports.create = function(req, res) {
       res.status(400).send('User with email ' + req.body.email + ' already exists');
     }
   })
-  
 };
+
+// Adds a new applicant in the DB.
+exports.createApplicant = function(req, res) {
+if (!req.body.invitation || !req.body.invitation.valid) {
+    return res.status(400).send('Invalid');
+  }
+  var applicantGenerated = {
+    email : req.body.invitation.email,
+    firstName : req.body.firstName,
+    lastName: req.body.lastName,
+    invitedBy: req.body.invitation.createdBy,
+    test : {
+      testId : req.body.invitation.testId,
+      // get the cookie and add it to the applicant
+      cookie: req.cookies.uuid,
+      language : req.body.test.language,
+      valid: req.body.invitation.valid
+      },
+    };
+  Applicant.create(applicantGenerated, function(err, applicant) {
+    if(err) { return handleError(res, err); }
+      return res.status(201).json(applicant);
+    });
+};
+  
 
 // Updates an existing applicant in the DB.
 exports.update = function(req, res) {
