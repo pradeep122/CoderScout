@@ -14,6 +14,19 @@ angular.module('coderScout')
             });
             return deferred.promise;
         }
+        var createApplicant = function(userDetails) {
+            var deferred = $q.defer();
+            $http({
+                method: "POST",
+                url: "/api/applicant/create/",
+                data: userDetails
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        }
         var getTest = function(testId) {
             var deferred = $q.defer();
             $http({
@@ -72,12 +85,25 @@ angular.module('coderScout')
             });
             return deferred.promise;
         };
+        var getQuestion = function(questionId) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/api/question/" + questionId,
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        }
         return {
             isValidInvite: isValidInvite,
             getTest: getTest,
             getQuestions: getQuestions,
             saveSol: saveSol,
             execSol: execSol,
-            submitExam: submitExam
+            submitExam: submitExam,
+            getQuestion: getQuestion
         };
     });

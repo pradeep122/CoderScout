@@ -10,7 +10,11 @@ angular.module('coderScout')
         $cookieStore,
         dataService) {
         var testId = "";
+        var validInvite = {};
         var init = function() {
+            $scope.userDetails = {
+                test: {}
+            };
             checkValidityOfInvite();
         };
 
@@ -18,6 +22,7 @@ angular.module('coderScout')
             createCookie();
             apiRegistry.isValidInvite($stateParams.inviteId).then(function(successRes) {
                 testId = successRes.data.testId;
+                validInvite = successRes.data
             }, function(err) {
                 $location.path("/error");
                 setTimeout(function() {
@@ -31,6 +36,13 @@ angular.module('coderScout')
             $cookieStore.put("uuid", $rootScope.uuid);
         }
 
+        var createApplicant = function() {
+            $scope.userDetails.invitation = validInvite;
+            apiRegistry.createApplicant($scope.userDetails).then(function(successRes) {
+                getTestReq();
+            }, function(errorRes) {})
+        }
+
         $scope.validateEmail = function() {
             var emailRegEx = /^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/;
             $scope.errorMsg = !emailRegEx.test($scope.userEmail);
@@ -38,7 +50,8 @@ angular.module('coderScout')
 
         $scope.getTestReq = function() {
             apiRegistry.getTest(testId).then(function(successRes) {
-                dataService.setQuestions(successRes.data.questions);
+                dataService.setQuestionIds(successRes.data.questions);
+                $location.path("/exam");
             });
         };
 

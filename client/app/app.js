@@ -31,7 +31,7 @@ angular.module('coderScout', [
             }
         });
         $urlRouterProvider
-            .otherwise('/error/404');
+            .otherwise('/error');
 
         $locationProvider.html5Mode(true);
     })

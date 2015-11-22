@@ -1,15 +1,14 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col m1 s1 l1 collection" style=" border: none;">
-            <div ng-repeat="i in [1,2,3,4,5,6,7,8] track by $index" style="border: 1px solid #e0e0e0;
+            <div ng-repeat="questionObj in questionIds track by $index" style="border: 1px solid #e0e0e0;
     border-radius: 2px; text-align: center;">
-                <a href="#!" class="collection-item">{{i}}</a>
+                <a ng-click="getQuestion(questionObj.questionId);" class="collection-item">{{$index + 1}}</a>
             </div>
         </div>
         <div class="col m9 s9 l9 collection">
             <div class="row">
-                <h1>Title</h1>
-                <p>{{question}}</p>
+                <p>{{currentQuestion.description}}</p>
             </div>
             <div class="row">
                 <div ui-ace="{
@@ -25,7 +24,7 @@
                   mode: 'java',
                   onLoad: aceLoaded,
                   onChange: aceChanged
-                }" ng-model="resource.ruleExpression" class="textarea">
+                }" ng-model="currentQuestion.solution" class="textarea">
                 </div>
             </div>
         </div>
