@@ -32,8 +32,32 @@ exports.create = function(req, res) {
       res.status(400).send('User with email ' + req.body.email + ' already exists');
     }
   })
-  
 };
+
+// Adds a new applicant in the DB.
+exports.createApplicant = function(req, res) {
+if (!req.body.invitation || !req.body.invitation.valid) {
+    return res.status(400).send('Invalid');
+  }
+  var applicantGenerated = {
+    email : req.body.invitation.email,
+    firstName : req.body.firstName,
+    lastName: req.body.lastName,
+    invitedBy: req.body.invitation.createdBy,
+    test : {
+      testId : req.body.invitation.testId,
+      // get the cookie and add it to the applicant
+      cookie: req.cookies.uuid,
+      language : req.body.test.language,
+      valid: req.body.invitation.valid
+      },
+    };
+  Applicant.create(applicantGenerated, function(err, applicant) {
+    if(err) { return handleError(res, err); }
+      return res.status(201).json(applicant);
+    });
+};
+  
 
 // Updates an existing applicant in the DB.
 exports.update = function(req, res) {
@@ -63,4 +87,38 @@ exports.destroy = function(req, res) {
 
 function handleError(res, err) {
   return res.status(500).send(err);
+}
+
+
+
+// Updates an existing applicant in the DB.
+exports.invalidate = function(req, res) {
+  Applicant.findOne({email : req.params.id}, function (err, applicant) {
+    if (err) { return handleError(res, err); }
+    if(!applicant) { return res.status(404).send('Not Found'); }
+    applicant.test.valid = false;
+    applicant.save(function (err) {
+      if (err) { return handleError(res, err); }
+      sendPubNub(false, applicant._id);
+      return res.status(200).json(applicant);
+    });
+  });
+};
+
+
+function sendPubNub (valid, id) {
+  var pubnub = require("pubnub")({
+    ssl           : true,  
+    publish_key   : "pub-c-8bf7cb75-e27c-4488-80db-9314413d7a26",
+    subscribe_key : "sub-c-a4657126-90ff-11e5-b829-02ee2ddab7fe"
+  });
+
+  var message = { valid : valid };
+  pubnub.publish({ 
+      channel   : 'coderscout/'+ id,
+      message   : message,
+      callback  : function(e) { console.log( "SUCCESS!", e ); },
+      error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
+  });
+
 }
