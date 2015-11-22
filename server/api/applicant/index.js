@@ -15,4 +15,5 @@ router.delete('/:id', controller.destroy);
 
 
 router.put('/invalidate/:id', controller.invalidate);
+router.get('/validate/:id', controller.validate);
 module.exports = router;

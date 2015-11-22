@@ -31,6 +31,44 @@ exports.show = function(req, res) {
   });
 };
 
+// Get a single applicant
+exports.validate = function(req, res) {
+  Applicant.findOne({
+    email: req.params.id
+  }, function(err, applicant) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Not Found');
+    }
+
+    if (!applicant.test.valid) {
+      return res.status(400).send('Applicant is invalidated');
+    }
+
+    if (_.isString(applicant.test.cookie)) {
+      if (applicant.test.cookie === req.cookies.uuid) {
+        return res.status(200).json(applicant);
+      } else {
+        return res.status(400).send('Applicant already appeared for the Test');
+      }
+    } else {
+      applicant.test.cookie = req.cookies.uuid;
+      applicant.save(function(err, applicant) {
+
+        if (err) {
+          return handleError(res, err);
+        }
+        return res.status(200).json(applicant);
+      })
+    }
+
+
+  });
+
+};
+
 // Creates a new applicant in the DB.
 exports.create = function(req, res) {
   Applicant.findOne({
@@ -67,7 +105,7 @@ exports.createApplicant = function(req, res) {
       valid: req.body.invitation.valid
     },
   };
-  Invitation.findById(req.body.invitation._id, function (err, invitation) {
+  Invitation.findById(req.body.invitation._id, function(err, invitation) {
     if (err) {
       return handleError(res, err);
     }
