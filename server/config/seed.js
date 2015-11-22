@@ -126,12 +126,172 @@ Question.find({}).remove(function() {
 
                 Invitation.find({}).remove(function() {
                     Invitation.create({
-                        email: 'saruk589@gmail.com',
-                        createdBy : 'pradeep122@gmail.com',
+                        email: 'saruk58@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
                         testId: test1._id
                     }, {
-                        email: 'abc123@gmail.com',
-                        createdBy : 'pradeep122@gmail.com',
+                        email: 'sar89@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'k589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'ruk589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'aruk589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'sruk589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'sauk589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk89@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'saruk5889@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruk58999@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk56689@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'sarudffk589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'sarukttt21589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'sarukttt57589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'sarukttt@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'sarukttt58309@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'sarukttt431589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'saruktttswe589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'swek589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'sprak589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruvek589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruwek589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk1122589@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'saruk587689@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk5gr589@gmail.com',
+                        createdBy: 'iswetha522@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruk589gdgg@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk58945g@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk589gdt5h6@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk5891234@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruk5895678@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'saruk5891357@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk589swe@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'sarukwe9@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk58921@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruk589367@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test2._id
+                    },{
+                        email: 'saruk5890001@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test3._id
+                    },{
+                        email: 'saruk589dfff34d@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk58912345@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk589swertha@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk589pra@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'saruk589roh@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
+                        testId: test1._id
+                    },{
+                        email: 'abc123kam@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
                         testId: test2._id
                     }, function(err, invitation1, invitation2) {
                         Applicant.find({}).remove(function() {
@@ -151,12 +311,12 @@ Question.find({}).remove(function() {
                                     }]
                                 },
                                 invitedBy: invitation1.createdBy
-                            }, function (err, invitation) {
-                              if(err){
-                                console.log(err);
-                              }else {
-                                console.log(invitation);
-                              }
+                            }, function(err, invitation) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log(invitation);
+                                }
                             });
                         });
                     });

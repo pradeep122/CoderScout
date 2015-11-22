@@ -18,26 +18,21 @@ angular.module('coderScout', [
             templateUrl: "app/components/exam/exam.html",
             controller: "examCtrl"
         }).state("error", {
-            url: "/error/:code",
+            url: "/error",
             templateUrl: "app/components/error/error.html",
             controller: function($stateParams, $rootScope, $scope) {
-                $scope.errorObj = _.findWhere($rootScope.errorList, {
-                    code: $stateParams.code
-                });
-
+                $scope.$on("errorResMsgBroadcast", function(event, data) {
+                    $scope.errorObj = {
+                        code: data.status,
+                        message: (data.status == 500) ?
+                            "Internal Server Error" : data.data
+                    };
+                })
             }
         });
         $urlRouterProvider
-            .otherwise('/error/404');
+            .otherwise('/error');
 
         $locationProvider.html5Mode(true);
     })
-    .controller('appCtrl', function($rootScope) {
-        $rootScope.errorList = [{
-            code: "701",
-            message: 'Invalid Invitation'
-        }, {
-            code: "404",
-            message: 'Page Not Found'
-        }]
-    });
+    .controller('appCtrl', function($rootScope) {});

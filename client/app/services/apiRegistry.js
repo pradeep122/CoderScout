@@ -6,29 +6,36 @@ angular.module('coderScout')
             var deferred = $q.defer();
             $http({
                 method: "GET",
-                url: "/api/invitation/" + inviteId,
-                params: {
-                    uuid: $rootScope.uuid
-                }
+                url: "/api/invitation/validate/" + inviteId,
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         }
-        var getTest = function(useremail, accessKey) {
+        var createApplicant = function(userDetails) {
             var deferred = $q.defer();
             $http({
-                method: "GET",
-                url: "/api/test/" + inviteId,
-                params: {
-                    uuid: $rootScope.uuid
-                }
+                method: "POST",
+                url: "/api/applicant/create/",
+                data: userDetails
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        }
+        var getTest = function(testId) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/api/test/" + testId,
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         };
@@ -37,13 +44,10 @@ angular.module('coderScout')
             $http({
                 method: "GET",
                 url: "/api/questions/multiple" + inviteId,
-                params: {
-                    uuid: $rootScope.uuid
-                }
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         };
@@ -52,13 +56,10 @@ angular.module('coderScout')
             $http({
                 method: "PUT",
                 url: "/api/applicant/" + inviteId + "/test",
-                params: {
-                    uuid: $rootScope.uuid
-                }
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         };
@@ -69,7 +70,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         };
@@ -80,7 +81,31 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.reject("errorResponse" + errorResponse);
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        };
+        var getQuestion = function(questionId) {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/api/question/" + questionId,
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        }
+        var validateApplicant = function() {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/api/applicant/validate/" + $rootScope.applicantId,
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
             });
             return deferred.promise;
         };
@@ -90,6 +115,9 @@ angular.module('coderScout')
             getQuestions: getQuestions,
             saveSol: saveSol,
             execSol: execSol,
-            submitExam: submitExam
+            submitExam: submitExam,
+            getQuestion: getQuestion,
+            validateApplicant: validateApplicant,
+            createApplicant: createApplicant
         };
     });

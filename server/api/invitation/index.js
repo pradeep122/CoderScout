@@ -12,6 +12,7 @@ router.put('/:id', controller.update);
 router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
+
 router.get('/validate/:id', controller.validate);
 router.post('/invite', controller.invite);
 router.put('/resend/:id', controller.resend);
