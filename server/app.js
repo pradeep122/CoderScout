@@ -6,6 +6,10 @@
 
 // Set default node environment to development
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+process.env.SENDGRID_USERNAME = process.env.SENDGRID_USERNAME || 'coderscout'
+process.env.SENDGRID_PASSWORD = process.env.SENDGRID_PASSWORD || 'pa88w0rd'
+
+
 
 var express = require('express');
 var mongoose = require('mongoose');

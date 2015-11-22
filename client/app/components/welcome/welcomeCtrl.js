@@ -8,7 +8,9 @@ angular.module('coderScout')
 
         var checkValidityOfInvite = function() {
             createCookie();
-            apiRegistry.isValidInvite($stateParams.inviteId).then(function() {}, function(err) {
+            apiRegistry.isValidInvite($stateParams.inviteId).then(function() {
+
+            }, function(err) {
                 $location.path("/error/701");
             })
         };
@@ -23,8 +25,8 @@ angular.module('coderScout')
             $scope.errorMsg = !emailRegEx.test($scope.userEmail);
         };
 
-        $scope.beginTestReq = function() {
-            apiRegistry.beginTest($scope.userEmail, $stateParams.inviteId).then(function() {
+        $scope.getTestReq = function() {
+            apiRegistry.getTest($scope.userEmail, $stateParams.inviteId).then(function() {
 
             });
         };
