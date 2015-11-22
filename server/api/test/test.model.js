@@ -5,8 +5,12 @@ var mongoose = require('mongoose'),
 
 var TestSchema = new Schema({
         id: String,
-        invitations: [{ type : Schema.Types.ObjectId,ref : 'Invitation' }],
-        questions: [{type : Schema.Types.ObjectId,ref : 'Question' }],
+        invitations: [{
+        	invitationId : { type : Schema.Types.ObjectId,ref : 'Invitation' }
+        }],
+        questions: [{
+        	questionId : {type : Schema.Types.ObjectId,ref : 'Question' }
+        }],
         startTime: String,
         endTime: String,
         duration: Number,

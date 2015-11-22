@@ -12,16 +12,17 @@ var ApplicantSchema = new Schema({
         test: {
             testId: {type : Schema.Types.ObjectId,ref : 'Test' },
             language: String,
-            startTime: String,
-            submitTime: String,
-            endTime: String,
+            startTime: Date,
+            submitTime: Date,
+            endTime: Date,
             questions: [{
                 question_id: {type : Schema.Types.ObjectId,ref : 'Question' },
                 score: Number,
                 solution: String
             }],
             feedback: String,
-            valid: Boolean
+            valid: Boolean,
+            cookie: String
         },
         invitedBy: String
     });
