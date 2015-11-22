@@ -24,7 +24,7 @@ angular.module('coderScout', [
             }
         });
         $urlRouterProvider
-            .otherwise('/welcome');
+            .otherwise('/error/404');
 
         $locationProvider.html5Mode(true);
     })
@@ -33,6 +33,7 @@ angular.module('coderScout', [
             code: "701",
             message: 'Invalid Invitation'
         }, {
-
+            code: "404",
+            message: 'Page Not Found'
         }]
     });

@@ -19,3 +19,12 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // injector
 @import 'modal/modal.scss';
 // endinjector
+@font-face {
+    font-family: 'Slot';
+    src: url('fonts/Slot-Regular.otf');
+}
+
+.logo {
+    font-family: Slot;
+    font-size: 40px;
+}
