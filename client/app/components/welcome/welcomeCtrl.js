@@ -23,8 +23,8 @@ angular.module('coderScout')
             $scope.errorMsg = !emailRegEx.test($scope.userEmail);
         };
 
-        $scope.beginTestReq = function() {
-            apiRegistry.beginTest($scope.userEmail, $stateParams.inviteId).then(function() {
+        $scope.getTestReq = function() {
+            apiRegistry.getTest($scope.userEmail, $stateParams.inviteId).then(function() {
 
             });
         };
