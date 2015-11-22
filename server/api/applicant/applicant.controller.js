@@ -64,3 +64,39 @@ exports.destroy = function(req, res) {
 function handleError(res, err) {
   return res.status(500).send(err);
 }
+
+
+
+// Updates an existing applicant in the DB.
+exports.valid = function(req, res) {
+  Applicant.findOne({email : req.params.id}, function (err, applicant) {
+    if (err) { return handleError(res, err); }
+    if(!applicant) { return res.status(404).send('Not Found'); }
+    var updated = _.merge(applicant, {valid : req.params.value});
+    updated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      if(!applicant.valid){
+        sendPubNub(false, applicant._id);
+      }
+      return res.status(200).json(applicant);
+    });
+  });
+};
+
+
+function sendPubNub (valid, id) {
+  var pubnub = require("pubnub")({
+    ssl           : true,  
+    publish_key   : "pub-c-8bf7cb75-e27c-4488-80db-9314413d7a26",
+    subscribe_key : "sub-c-a4657126-90ff-11e5-b829-02ee2ddab7fe"
+  });
+
+  var message = { valid : valid };
+  pubnub.publish({ 
+      channel   : 'coderscout/'+ id,
+      message   : message,
+      callback  : function(e) { console.log( "SUCCESS!", e ); },
+      error     : function(e) { console.log( "FAILED! RETRY PUBLISH!", e ); }
+  });
+
+}

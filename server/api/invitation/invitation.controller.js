@@ -14,7 +14,20 @@ var Invitation = require('./invitation.model');
 
 function sendEmail(email, key) {
     console.log('Sending invitation to ' + email);
-    //TODO send email
+    var sendgrid = require('sendgrid')(process.env.SENDGRID_USERNAME, process.env.SENDGRID_PASSWORD);
+    sendgrid.send({
+        to: email,
+        from: 'hello@coderscout.io',
+        subject: 'Invitation to Online Programming Screen Test - CoderScout',
+        text: 'Hello , \n' + 
+          ' You have been invited to appear for an Online Programming Screen Test for Yantranet. \n' + 
+          ' Please go to http://coderscout.io/welcome/' + key + '  to access the Test.\n'
+    }, function(err, json) {
+        if (err) {
+            return console.error(err);
+        }
+        console.log(json);
+    });
 };
 
 // Get list of invitations
@@ -46,11 +59,11 @@ exports.validate = function(req, res) {
         if (err) {
             return handleError(res, err);
         }
-        if (!invitation || !invitation.valid ) {
+        if (!invitation || !invitation.valid) {
             return res.status(404).send('Not Found');
         }
 
-        if(_.isString(invitation.cookie)){
+        if (_.isString(invitation.cookie) ) {
             return res.status(400).send('Invitation link is already used');
         }
 
@@ -121,7 +134,7 @@ exports.cancel = function(req, res) {
         }
 
         invitation.valid = false;
-        invitation.save(function (err, invitation) {
+        invitation.save(function(err, invitation) {
             if (err) {
                 return handleError(res, err);
             }
