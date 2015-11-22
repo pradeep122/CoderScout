@@ -14,6 +14,7 @@ Applicant
             startTime:string
             submitTime: string
             endTime:string
+            cookie : string
             questions : [{
                 question_id : string
                 score:number
@@ -58,8 +59,10 @@ Invitation
     invitation : {
         id:string,
         email: string
-        accessKey:string    
+        cookie : string
         createdBy:string
+        testId : string
+        valid : Boolean
     }
 
 Question
