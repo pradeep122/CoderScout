@@ -67,11 +67,13 @@ Invitation.find({}).remove(function() {
   Invitation.create({
     email : 'saruk589@gmail.com',
     cookie : 'saru',
-    createdBy : 'iswetha522@gmail.com'
+    createdBy : 'iswetha522@gmail.com',
+    valid : true
   }, {
     email : 'abc123@gmail.com',
     cookie : 'abc123',
-    createdBy : 'pradeep122@gmail.com'
+    createdBy : 'pradeep122@gmail.com',
+    valid : true
   });
 });
 
