@@ -13,7 +13,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         }
@@ -28,7 +28,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         };
@@ -43,7 +43,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         };
@@ -58,7 +58,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         };
@@ -69,7 +69,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         };
@@ -80,7 +80,7 @@ angular.module('coderScout')
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
-                deferred.resolve("errorResponse" + errorResponse);
+                deferred.reject("errorResponse" + errorResponse);
             });
             return deferred.promise;
         };

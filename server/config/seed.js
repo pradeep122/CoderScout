@@ -155,7 +155,7 @@ Question.find({}).remove(function() {
                               if(err){
                                 console.log(err);
                               }else {
-                                console.log(invitation)
+                                console.log(invitation);
                               }
                             });
                         });

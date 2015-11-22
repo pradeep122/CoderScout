@@ -8,7 +8,9 @@ angular.module('coderScout')
 
         var checkValidityOfInvite = function() {
             createCookie();
-            apiRegistry.isValidInvite($stateParams.inviteId).then(function() {}, function(err) {
+            apiRegistry.isValidInvite($stateParams.inviteId).then(function() {
+
+            }, function(err) {
                 $location.path("/error/701");
             })
         };

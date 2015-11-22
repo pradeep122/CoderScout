@@ -20,6 +20,7 @@ exports.index = function(req, res) {
   });
 };
 
+
 // Get a single question
 exports.show = function(req, res) {
   Question.findById(req.params.id, function (err, question) {

@@ -16,7 +16,7 @@ var ApplicantSchema = new Schema({
             submitTime: Date,
             endTime: Date,
             questions: [{
-                question_id: {type : Schema.Types.ObjectId,ref : 'Question' },
+                questionId: {type : Schema.Types.ObjectId,ref : 'Question' },
                 score: Number,
                 solution: String
             }],
