@@ -1,7 +1,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col m1 s1 l1 collection" style=" border: none;">
-            <div ng-repeat="questionObj in questionIds track by $index" style="border: 1px solid #e0e0e0;
+            <div ng-repeat="questionObj in questions track by $index" style="border: 1px solid #e0e0e0;
     border-radius: 2px; text-align: center;">
                 <a ng-click="getQuestion(questionObj.questionId);" class="collection-item">{{$index + 1}}</a>
             </div>
@@ -33,7 +33,7 @@
                 <h5>00:00:00</h5>
             </div>
             <div class="collection-item ">
-                <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-step-forward "></i>Next</a>
+                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="nextQuestion()"><i class="material-icons left fa fa-step-forward " ></i>Next</a>
             </div>
             <div class="collection-item ">
                 <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-gear "></i>Run</a>

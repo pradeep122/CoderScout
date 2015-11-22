@@ -4,17 +4,16 @@ angular.module('coderScout')
     .factory('dataService', function() {
         var data = {};
 
-        function setQuestionIds(questionIdList) {
-            data.questionIdList = questionIdList;
-            alert(JSON.stringify(data.questionIdList));
+        function setQuestions(questionList) {
+            data.questionList = questionList;
         };
 
-        function getQuestionIds() {
-            return data.questionIdList;
+        function getQuestions() {
+            return data.questionList;
         };
 
         return {
-            setQuestionIds: setQuestionIds,
-            getQuestionIds: getQuestionIds
+            setQuestions: setQuestions,
+            getQuestions: getQuestions
         }
     });

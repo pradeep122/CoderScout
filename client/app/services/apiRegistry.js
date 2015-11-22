@@ -97,6 +97,18 @@ angular.module('coderScout')
             });
             return deferred.promise;
         }
+        var validateApplicant = function() {
+            var deferred = $q.defer();
+            $http({
+                method: "GET",
+                url: "/api/applicant/validate/" + $rootScope.applicantId,
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        };
         return {
             isValidInvite: isValidInvite,
             getTest: getTest,
@@ -104,6 +116,8 @@ angular.module('coderScout')
             saveSol: saveSol,
             execSol: execSol,
             submitExam: submitExam,
-            getQuestion: getQuestion
+            getQuestion: getQuestion,
+            validateApplicant: validateApplicant,
+            createApplicant: createApplicant
         };
     });
