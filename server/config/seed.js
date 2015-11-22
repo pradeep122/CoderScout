@@ -125,3 +125,31 @@ Interviewer.find({}).remove(function () {
     lastName: 'Konisi'
   });
 });
+
+var Test = require('../api/test/test.model');
+
+Test.find({}).remove(function () {
+  Test.create({
+    invitations: [],
+    questions: [],
+    startTime: '21-11-2015 10:00:00',
+    endTime: '21-11-2015 12:00:00',
+    duration: 120 ,
+    createdBy: 'bhavyalatha26@gmail.com'
+  },{
+    invitations: [],
+    questions: [],
+    startTime: '21-11-2015 14:00:00',
+    endTime: '21-11-2015 15:00:00',
+    duration: 60 ,
+    createdBy: 'pradeep122@gmail.com'
+  },
+  {
+    invitations: [],
+    questions: [],
+    startTime: '22-11-2015 09:00:00',
+    endTime: '22-11-2015 11:00:00',
+    duration: 120 ,
+    createdBy: 'camal4u@gmail.com'
+  });
+});
