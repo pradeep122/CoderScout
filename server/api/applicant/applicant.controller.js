@@ -207,7 +207,7 @@ exports.submit = function(req, res) {
       if (applicant.test.cookie === req.cookies.uuid) {
         applicant.test.valid = false;
         var updatedApplicant = _.merge(applicant, req.body);
-        updatedAapplicant.save(function(err) {
+        updatedApplicant.save(function(err) {
           if (err) {
             return handleError(res, err);
           }
