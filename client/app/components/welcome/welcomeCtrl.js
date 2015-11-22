@@ -1,23 +1,34 @@
 'use strict';
 
 angular.module('coderScout')
-    .controller('welcomeCtrl', function($rootScope, $scope, apiRegistry, $stateParams, $location, utils, $cookieStore) {
+    .controller('welcomeCtrl', function($rootScope,
+        $scope,
+        apiRegistry,
+        $stateParams,
+        $location,
+        utils,
+        $cookieStore,
+        dataService) {
+        var testId = "";
         var init = function() {
             checkValidityOfInvite();
         };
 
         var checkValidityOfInvite = function() {
             createCookie();
-            apiRegistry.isValidInvite($stateParams.inviteId).then(function() {
-
+            apiRegistry.isValidInvite($stateParams.inviteId).then(function(successRes) {
+                testId = successRes.data.testId;
             }, function(err) {
-                $location.path("/error/701");
+                $location.path("/error");
+                setTimeout(function() {
+                    $rootScope.$broadcast("errorResMsgBroadcast", err);
+                }, 10);
             })
         };
 
         var createCookie = function() {
             $rootScope.uuid = utils.generateUUID();
-            $cookieStore.put("examSession", $rootScope.uuid);
+            $cookieStore.put("uuid", $rootScope.uuid);
         }
 
         $scope.validateEmail = function() {
@@ -26,8 +37,8 @@ angular.module('coderScout')
         };
 
         $scope.getTestReq = function() {
-            apiRegistry.getTest($scope.userEmail, $stateParams.inviteId).then(function() {
-
+            apiRegistry.getTest(testId).then(function(successRes) {
+                dataService.setQuestions(successRes.data.questions);
             });
         };
 

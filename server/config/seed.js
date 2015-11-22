@@ -127,11 +127,11 @@ Question.find({}).remove(function() {
                 Invitation.find({}).remove(function() {
                     Invitation.create({
                         email: 'saruk589@gmail.com',
-                        createdBy : 'pradeep122@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
                         testId: test1._id
                     }, {
                         email: 'abc123@gmail.com',
-                        createdBy : 'pradeep122@gmail.com',
+                        createdBy: 'pradeep122@gmail.com',
                         testId: test2._id
                     }, function(err, invitation1, invitation2) {
                         Applicant.find({}).remove(function() {
@@ -151,12 +151,12 @@ Question.find({}).remove(function() {
                                     }]
                                 },
                                 invitedBy: invitation1.createdBy
-                            }, function (err, invitation) {
-                              if(err){
-                                console.log(err);
-                              }else {
-                                console.log(invitation);
-                              }
+                            }, function(err, invitation) {
+                                if (err) {
+                                    console.log(err);
+                                } else {
+                                    console.log(invitation);
+                                }
                             });
                         });
                     });
