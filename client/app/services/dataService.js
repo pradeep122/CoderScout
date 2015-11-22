@@ -9,11 +9,20 @@ angular.module('coderScout')
         };
 
         function getQuestions() {
-            return data.questionList;
+            return data.applicantData.test.questions;
         };
 
+        function setApplicantData(applicantData) {
+            data.applicantData = applicantData;
+        }
+
+        function getApplicantData() {
+            return data.applicantData;
+        }
         return {
             setQuestions: setQuestions,
-            getQuestions: getQuestions
+            getQuestions: getQuestions,
+            setApplicantData: setApplicantData,
+            getApplicantData: getApplicantData
         }
     });

@@ -5,9 +5,9 @@ angular.module('coderScout')
         function init() {
             validateApplicant();
             $scope.questionsList = [];
+            $scope.currentQuestionIndex = -1;
         };
-        $scope.questionNumber = "1";
-        $scope.question = "write a program for palindrom";
+
 
         function getQuestions() {
             $scope.questions = dataService.getQuestions();
@@ -20,23 +20,41 @@ angular.module('coderScout')
 
         function validateApplicant() {
             apiRegistry.validateApplicant().then(function(successRes) {
-                dataService.setQuestions(successRes.data.test.questions);
+                dataService.setApplicantData(successRes.data);
                 getQuestions();
             }, function(errorRes) {})
         };
 
         $scope.getQuestion = function(id) {
-            apiRegistry.getQuestion(id).then(function(successRes) {
-                $scope.questionsList.push(successRes.data);
-                $scope.currentQuestion = successRes.data;
-            }, function(errorRes) {})
+            var question = _.findWhere($scope.questionsList, {
+                _id: id
+            });
+            if (question) {
+                $scope.currentQuestion = question;
+                $scope.currentQuestionIndex = _.indexOf($scope.questionsList, question);
+            } else {
+                apiRegistry.getQuestion(id).then(function(successRes) {
+                    $scope.questionsList.push(successRes.data);
+                    $scope.currentQuestionIndex++;
+                    $scope.currentQuestion = $scope.questionsList[$scope.currentQuestionIndex];
+                }, function(errorRes) {})
+            }
         };
 
         $scope.nextQuestion = function() {
-            var index = _.indexOf($scope.questions, _.findWhere($scope.questions, {
-                questionId: $scope.currentQuestion._id
-            }));
+            var index = $scope.questions[$scope.currentQuestionIndex];
             $scope.getQuestion($scope.questions[index + 1].questionId);
+        };
+
+        $scope.saveApplicantData = function() {
+            var applicantData = dataService.getApplicantData();
+            applicantData.text.questions = $scope.questionsList;
+            apiRegistry.saveApplicantData(applicantData).then(function() {
+
+            }, function() {
+
+            });
+
         };
 
         init();

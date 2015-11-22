@@ -109,6 +109,21 @@ angular.module('coderScout')
             });
             return deferred.promise;
         };
+
+        var saveApplicantData = function(applicantData) {
+            var deferred = $q.defer();
+            $http({
+                method: "PUT",
+                url: "/api/applicant/save",
+                data: applicantData
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        };
+
         return {
             isValidInvite: isValidInvite,
             getTest: getTest,
@@ -118,6 +133,7 @@ angular.module('coderScout')
             submitExam: submitExam,
             getQuestion: getQuestion,
             validateApplicant: validateApplicant,
-            createApplicant: createApplicant
+            createApplicant: createApplicant,
+            saveApplicantData: saveApplicantData
         };
     });
