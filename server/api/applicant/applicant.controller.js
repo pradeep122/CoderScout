@@ -57,7 +57,35 @@ if (!req.body.invitation || !req.body.invitation.valid) {
       return res.status(201).json(applicant);
     });
 };
-  
+
+// Updates an existing applicant in the DB.
+exports.saveSolutions = function(req, res) {
+  if(req.body._id) { delete req.body._id; }
+  Applicant.findOne({email : req.params.id}, function (err, applicant) {
+    if (err) { return handleError(res, err); }
+    if(!applicant) { return res.status(404).send('Not Found'); }
+    if(applicant.test.cookie == req.cookies.uuid)
+    {
+      var applicantUpdated = applicant
+      var passedQuestions = req.body.test.questions;
+      for(var i =0 ; i < passedQuestions.length;i++) {
+        for(var j= 0 ; j < passedQuestions.length;j++){
+          if(passedQuestions[i].questionId == applicant.test.questions[j].questionId){
+              applicantUpdated.test.questions[i].score = 0
+              applicantUpdated.test.questions[i].solution = passedQuestions[i].solution
+          }
+        }
+      }
+      applicantUpdated.save(function (err) {
+      if (err) { return handleError(res, err); }
+      return res.status(200).json(applicantUpdated);
+      });
+    }
+    else{
+    return res.status(400).send("Invalid");
+  }
+  });
+};
 
 // Updates an existing applicant in the DB.
 exports.update = function(req, res) {
