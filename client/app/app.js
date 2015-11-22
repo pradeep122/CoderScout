@@ -17,6 +17,14 @@ angular.module('coderScout', [
             url: "/exam",
             templateUrl: "app/components/exam/exam.html",
             controller: "examCtrl"
+        }).state("home", {
+            url: "/home",
+            templateUrl: "app/components/home/home.html",
+            controller: "homeCtrl"
+        }).state("feedback", {
+            url: "/feedback",
+            templateUrl: "app/components/feedback/feedback.html",
+            controller: "feedbackCtrl"
         }).state("error", {
             url: "/error",
             templateUrl: "app/components/error/error.html",
@@ -31,7 +39,7 @@ angular.module('coderScout', [
             }
         });
         $urlRouterProvider
-            .otherwise('/error');
+            .otherwise('/home');
 
         $locationProvider.html5Mode(true);
     })
