@@ -14,5 +14,5 @@ router.patch('/:id', controller.update);
 router.delete('/:id', controller.destroy);
 
 
-router.put('/valid/:id/:value', controller.valid);
+router.put('/invalidate/:id', controller.invalidate);
 module.exports = router;

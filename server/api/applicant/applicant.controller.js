@@ -92,16 +92,14 @@ function handleError(res, err) {
 
 
 // Updates an existing applicant in the DB.
-exports.valid = function(req, res) {
+exports.invalidate = function(req, res) {
   Applicant.findOne({email : req.params.id}, function (err, applicant) {
     if (err) { return handleError(res, err); }
     if(!applicant) { return res.status(404).send('Not Found'); }
-    var updated = _.merge(applicant, {valid : req.params.value});
-    updated.save(function (err) {
+    applicant.test.valid = false;
+    applicant.save(function (err) {
       if (err) { return handleError(res, err); }
-      if(!applicant.valid){
-        sendPubNub(false, applicant._id);
-      }
+      sendPubNub(false, applicant._id);
       return res.status(200).json(applicant);
     });
   });
