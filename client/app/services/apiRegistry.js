@@ -114,7 +114,21 @@ angular.module('coderScout')
             var deferred = $q.defer();
             $http({
                 method: "PUT",
-                url: "/api/applicant/save",
+                url: "/api/applicant/" + $rootScope.applicantId + "/save",
+                data: applicantData
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+            });
+            return deferred.promise;
+        };
+
+        var submitApplicantData = function(applicantData) {
+            var deferred = $q.defer();
+            $http({
+                method: "PUT",
+                url: "/api/applicant/" + $rootScope.applicantId + "/submit",
                 data: applicantData
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
@@ -134,6 +148,7 @@ angular.module('coderScout')
             getQuestion: getQuestion,
             validateApplicant: validateApplicant,
             createApplicant: createApplicant,
-            saveApplicantData: saveApplicantData
+            saveApplicantData: saveApplicantData,
+            submitApplicantData: submitApplicantData
         };
     });

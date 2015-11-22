@@ -34,11 +34,8 @@
                     <div class="form-group col-xs-4 col-xs-offset-4">
                         <div class="input-field col s10 m10 l10">
                             <select class="browser-default" ng-model="userDetails.test.language">
-                                <option value="" disabled selected>Select Language</option>
-                                <option value="1">C</option>
-                                <option value="2">C++</option>
-                                <option value="3">Java</option>
-                                <option value="4">JavaScript</option>
+                                <option value="" disabled selected ng-if="!userDetails.test.language">Select Language</option>
+                                <option ng-repeat="language in testLanguages" value="{{language.value}}"> {{language.name}} </option>
                             </select>
                         </div>
                     </div>

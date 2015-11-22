@@ -12,11 +12,24 @@ angular.module('coderScout')
         var testId = "";
         var validInvite = {};
         var init = function() {
+            $scope.testLanguages = [{
+                name: 'Java',
+                value: 1
+            }, {
+                name: 'JavaScript',
+                value: 2
+            }, {
+                name: 'C',
+                value: 3
+            }, {
+                name: 'C++',
+                value: 4
+            }];
             $scope.userDetails = {
                 firstName: "Rohit",
                 lastName: "Kuncham",
                 test: {
-                    language: "Java"
+                    language: 1
                 }
             };
             checkValidityOfInvite();

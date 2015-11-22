@@ -3,7 +3,7 @@
         <div class="col m1 s1 l1 collection" style=" border: none;">
             <div ng-repeat="questionObj in questions track by $index" style="border: 1px solid #e0e0e0;
     border-radius: 2px; text-align: center;">
-                <a ng-click="getQuestion(questionObj.questionId);" class="collection-item">{{$index + 1}}</a>
+                <a ng-click="getQuestion(questionObj.questionId);" class="collection-item" ng-style="(currentQuestionIndex==$index) && {'background-color': '#ddd'}">{{$index + 1}}</a>
             </div>
         </div>
         <div class="col m9 s9 l9 collection">
@@ -30,10 +30,10 @@
         </div>
         <div class="col m2 s2 l2 collection">
             <div class="collection-item">
-                <h5>00:00:00</h5>
+                <h5><timer interval="1000" end-time="examDuration" finish-callback="submitApplicantData()">{{hours}}: {{minutes}}: {{seconds}}</timer></h5>
             </div>
             <div class="collection-item ">
-                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="getQuestion(questions[currentQuestionIndex+1].questionId)"><i class="material-icons left fa fa-step-forward " ></i>Next</a>
+                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="getQuestion(questions[currentQuestionIndex+1].questionId)" ng-disabled="currentQuestionIndex>=questions.length-1"><i class="material-icons left fa fa-step-forward " ></i>Next</a>
             </div>
             <div class="collection-item ">
                 <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-gear "></i>Run</a>
@@ -42,7 +42,7 @@
                 <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-refresh "></i>Reset</a>
             </div>
             <div class="collection-item ">
-                <a class="waves-effect waves-light btn blue exam-control-btns"><i class="material-icons left fa fa-floppy-o "></i>Submit</a>
+                <a class="waves-effect waves-light btn blue exam-control-btns" ng-click="submitApplicantData()"><i class="material-icons left fa fa-floppy-o "></i>Submit</a>
             </div>
         </div>
     </div>

@@ -6,7 +6,8 @@ angular.module('coderScout', [
         'ngSanitize',
         'ui.router',
         'ui.bootstrap',
-        'ui.ace'
+        'ui.ace',
+        'timer'
     ])
     .config(function($stateProvider, $urlRouterProvider, $locationProvider) {
         $stateProvider.state("welcome", {

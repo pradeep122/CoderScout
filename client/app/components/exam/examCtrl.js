@@ -1,11 +1,14 @@
 'use strict';
 
 angular.module('coderScout')
-    .controller('examCtrl', function($scope, dataService, apiRegistry, $location) {
+    .controller('examCtrl', function($scope, dataService, apiRegistry, $location, $interval) {
+        var autoSaveTimerTask;
+
         function init() {
             validateApplicant();
             $scope.questionsList = [];
             $scope.currentQuestionIndex = -1;
+
         };
 
 
@@ -13,6 +16,7 @@ angular.module('coderScout')
             $scope.questions = dataService.getQuestions();
             if ($scope.questions) {
                 $scope.getQuestion($scope.questions[0].questionId);
+                autoSaveApplicantData();
             } else {
                 $location.path("/error");
             }
@@ -20,9 +24,44 @@ angular.module('coderScout')
 
         function validateApplicant() {
             apiRegistry.validateApplicant().then(function(successRes) {
-                dataService.setApplicantData(successRes.data);
-                getQuestions();
-            }, function(errorRes) {})
+                    dataService.setApplicantData(successRes.data);
+                    var duration = successRes.data.test.duration;
+                    $scope.examDuration = new Date().getTime() + ((duration == undefined) ? (20 * 1000) : successRes.data.test.duration);
+                    getQuestions();
+                },
+                function(errorRes) {});
+        };
+
+        function autoSaveApplicantData() {
+            autoSaveTimerTask = $interval(saveApplicantData, 10000);
+        };
+
+        function getSavedQuestions() {
+            var questions = [];
+            _.map($scope.questions, function(questionObj) {
+                var fetchedQuestion = _.findWhere($scope.questionsList, {
+                    _id: questionObj.questionId
+                });
+                if (fetchedQuestion) {
+                    questions.push({
+                        questionId: fetchedQuestion._id,
+                        score: fetchedQuestion.score,
+                        solution: fetchedQuestion.solution,
+                        _id: questionObj._id
+                    });
+                }
+            });
+            return questions;
+        };
+
+        function saveApplicantData() {
+            var applicantData = dataService.getApplicantData();
+            applicantData.test.questions = getSavedQuestions();
+            apiRegistry.saveApplicantData(applicantData).then(function() {
+
+            }, function() {
+
+            });
         };
 
         $scope.getQuestion = function(id) {
@@ -46,15 +85,15 @@ angular.module('coderScout')
             $scope.getQuestion($scope.questions[index + 1].questionId);
         };
 
-        $scope.saveApplicantData = function() {
+        $scope.submitApplicantData = function() {
+            $interval.cancel(autoSaveTimerTask);
             var applicantData = dataService.getApplicantData();
-            applicantData.text.questions = $scope.questionsList;
-            apiRegistry.saveApplicantData(applicantData).then(function() {
+            applicantData.test.questions = getSavedQuestions();
+            apiRegistry.submitApplicantData(applicantData).then(function() {
 
             }, function() {
-
+                alert('Submission Failed!');
             });
-
         };
 
         init();
