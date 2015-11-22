@@ -147,7 +147,7 @@ exports.createApplicant = function(req, res) {
 exports.saveSolutions = function(req, res) {
 
   Applicant.findOne({
-    email: req.params.id
+    email: req.body.email
   }, function(err, applicant) {
     if (err) {
       return handleError(res, err);
@@ -162,8 +162,8 @@ exports.saveSolutions = function(req, res) {
 
     if (_.isString(applicant.test.cookie)) {
       if (applicant.test.cookie === req.cookies.uuid) {
-
-        applicant.save(function(err) {
+        var updatedApplicant = _.merge(applicant, req.body);
+        updatedApplicant.save(function(err) {
           if (err) {
             return handleError(res, err);
           }
@@ -190,7 +190,7 @@ exports.saveSolutions = function(req, res) {
 exports.submit = function(req, res) {
 
   Applicant.findOne({
-    email: req.params.id
+    email: req.body.email
   }, function(err, applicant) {
     if (err) {
       return handleError(res, err);
@@ -206,7 +206,8 @@ exports.submit = function(req, res) {
     if (_.isString(applicant.test.cookie)) {
       if (applicant.test.cookie === req.cookies.uuid) {
         applicant.test.valid = false;
-        applicant.save(function(err) {
+        var updatedApplicant = _.merge(applicant, req.body);
+        updatedAapplicant.save(function(err) {
           if (err) {
             return handleError(res, err);
           }
