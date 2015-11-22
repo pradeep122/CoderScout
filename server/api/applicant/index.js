@@ -17,5 +17,5 @@ router.put('/invalidate/:id', controller.invalidate);
 router.get('/validate/:id', controller.validate);
 router.post('/create', controller.createApplicant);
 router.put('/:id/save', controller.saveSolutions);
-router.put('/:id/sumbit', controller.submit);
+router.put('/:id/submit', controller.submit);
 module.exports = router;
