@@ -145,32 +145,90 @@ exports.createApplicant = function(req, res) {
 };
 
 exports.saveSolutions = function(req, res) {
-  if(req.body._id) { delete req.body._id; }
-  Applicant.findOne({email : req.params.id}, function (err, applicant) {
-    if (err) { return handleError(res, err); }
-    if(!applicant) { return res.status(404).send('Not Found'); }
-    if(applicant.test.cookie == req.cookies.uuid)
-    {
-      var applicantUpdated = applicant
-      var passedQuestions = req.body.test.questions;
-      for(var i =0 ; i < passedQuestions.length;i++) {
-        for(var j= 0 ; j < passedQuestions.length;j++){
-          if(passedQuestions[i].questionId == applicant.test.questions[j].questionId){
-              applicantUpdated.test.questions[i].score = 0
-              applicantUpdated.test.questions[i].solution = passedQuestions[i].solution
+
+  Applicant.findOne({
+    email: req.params.id
+  }, function(err, applicant) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Not Found');
+    }
+
+    if (!applicant.test.valid) {
+      return res.status(400).send('Applicant is invalidated');
+    }
+
+    if (_.isString(applicant.test.cookie)) {
+      if (applicant.test.cookie === req.cookies.uuid) {
+
+        applicant.save(function(err) {
+          if (err) {
+            return handleError(res, err);
           }
-        }
+          return res.status(200).json(applicant);
+        })
+      } else {
+        return res.status(400).send('Applicant already appeared for the Test');
       }
-      applicantUpdated.save(function (err) {
-      if (err) { return handleError(res, err); }
-      return res.status(200).json(applicantUpdated);
+    } else {
+      applicant.test.valid = false;
+      applicant.save(function (err) {
+          if (err) {
+            return handleError(res, err);
+          }
+        return res.status(400).send('No Cookie Found, Application is invalidated');
       });
     }
-    else{
-    return res.status(400).send("Invalid");
-  }
+
+
   });
 };
+
+
+exports.submit = function(req, res) {
+
+  Applicant.findOne({
+    email: req.params.id
+  }, function(err, applicant) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Not Found');
+    }
+
+    if (!applicant.test.valid) {
+      return res.status(400).send('Applicant is invalidated');
+    }
+
+    if (_.isString(applicant.test.cookie)) {
+      if (applicant.test.cookie === req.cookies.uuid) {
+        applicant.test.valid = false;
+        applicant.save(function(err) {
+          if (err) {
+            return handleError(res, err);
+          }
+          return res.status(200).json(applicant);
+        })
+      } else {
+        return res.status(400).send('Applicant already appeared for the Test');
+      }
+    } else {
+      applicant.test.valid = false;
+      applicant.save(function (err) {
+          if (err) {
+            return handleError(res, err);
+          }
+        return res.status(400).send('No Cookie Found, Application is invalidated');
+      });
+    }
+
+
+  });
+};
+
 
 // Updates an existing applicant in the DB.
 exports.update = function(req, res) {
