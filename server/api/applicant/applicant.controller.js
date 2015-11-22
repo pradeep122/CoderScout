@@ -144,6 +144,91 @@ exports.createApplicant = function(req, res) {
   });
 };
 
+exports.saveSolutions = function(req, res) {
+
+  Applicant.findOne({
+    email: req.body.email
+  }, function(err, applicant) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Applicant Not Found');
+    }
+
+    if (!applicant.test.valid) {
+      return res.status(400).send('Applicant is invalidated');
+    }
+
+    if (_.isString(applicant.test.cookie)) {
+      if (applicant.test.cookie === req.cookies.uuid) {
+        var updatedApplicant = _.merge(applicant, req.body);
+        updatedApplicant.save(function(err) {
+          if (err) {
+            return handleError(res, err);
+          }
+          return res.status(200).json(applicant);
+        })
+      } else {
+        return res.status(400).send('Applicant already appeared for the Test');
+      }
+    } else {
+      applicant.test.valid = false;
+      applicant.save(function (err) {
+          if (err) {
+            return handleError(res, err);
+          }
+        return res.status(400).send('No Cookie Found, Application is invalidated');
+      });
+    }
+
+
+  });
+};
+
+
+exports.submit = function(req, res) {
+
+  Applicant.findOne({
+    email: req.body.email
+  }, function(err, applicant) {
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Applicant Not Found');
+    }
+
+    if (!applicant.test.valid) {
+      return res.status(400).send('Applicant is invalidated');
+    }
+
+    if (_.isString(applicant.test.cookie)) {
+      if (applicant.test.cookie === req.cookies.uuid) {
+        applicant.test.valid = false;
+        var updatedApplicant = _.merge(applicant, req.body);
+        updatedApplicant.save(function(err) {
+          if (err) {
+            return handleError(res, err);
+          }
+          return res.status(200).json(applicant);
+        })
+      } else {
+        return res.status(400).send('Applicant already appeared for the Test');
+      }
+    } else {
+      applicant.test.valid = false;
+      applicant.save(function (err) {
+          if (err) {
+            return handleError(res, err);
+          }
+        return res.status(400).send('No Cookie Found, Application is invalidated');
+      });
+    }
+
+  });
+};
+
 
 // Updates an existing applicant in the DB.
 exports.update = function(req, res) {
