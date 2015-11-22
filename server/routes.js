@@ -12,6 +12,8 @@ module.exports = function(app) {
   // Insert routes below
   app.use('/api/invitation',require('./api/invitation'));
   app.use('/api/question',require('./api/question'));
+  app.use('/api/test',require('./api/test'));
+  app.use('/api/applicant',require('./api/applicant'));
   app.use('/api/things', require('./api/thing'));
   app.use('/api/interviewer', require('./api/interviewer'));
   

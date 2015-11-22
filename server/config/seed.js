@@ -66,11 +66,11 @@ var Invitation = require('../api/invitation/invitation.model');
 Invitation.find({}).remove(function() {
   Invitation.create({
     email : 'saruk589@gmail.com',
-    accessKey : 'saruk',
+    cookie : 'saru',
     createdBy : 'iswetha522@gmail.com'
   }, {
     email : 'abc123@gmail.com',
-    accessKey : 'abc123',
+    cookie : 'abc123',
     createdBy : 'pradeep122@gmail.com'
   });
 });
@@ -124,4 +124,59 @@ Interviewer.find({}).remove(function () {
     firstName: 'Kamal',
     lastName: 'Konisi'
   });
+});
+
+var Test = require('../api/test/test.model');
+
+Test.find({}).remove(function () {
+  Test.create({
+    invitations: [],
+    questions: [],
+    startTime: '21-11-2015 10:00:00',
+    endTime: '21-11-2015 12:00:00',
+    duration: 120 ,
+    createdBy: 'bhavyalatha26@gmail.com'
+  },{
+    invitations: [],
+    questions: [],
+    startTime: '21-11-2015 14:00:00',
+    endTime: '21-11-2015 15:00:00',
+    duration: 60 ,
+    createdBy: 'pradeep122@gmail.com'
+  },
+  {
+    invitations: [],
+    questions: [],
+    startTime: '22-11-2015 09:00:00',
+    endTime: '22-11-2015 11:00:00',
+    duration: 120 ,
+    createdBy: 'camal4u@gmail.com'
+  });
+});
+
+var Applicant = require('../api/applicant/applicant.model');
+
+Applicant.find({}).remove(function () {
+  Applicant.create({
+        email: 'bhavyalatha26@gmail.com',
+        firstName: 'Bhavya',
+        lastName: 'Latha',
+        info: {
+        },
+        test: {
+            testId : '56514f0e67ae3c3833611a27',
+            language: 'Java',
+            startTime: '22-11-2015 10:30:00',
+            submitTime: '22-11-2015 11:45:00',
+            endTime: '22-11-2015 12:30:00',
+            questions: [{
+                question_id: '56514f0e67ae3c3833611a27',
+                score: 45,
+                solution: ''
+            }],
+            feedback: 'pass',
+            valid: 'true'
+        },
+        invitedBy: 'pradeep122@gmail.com'
+    });
 });
