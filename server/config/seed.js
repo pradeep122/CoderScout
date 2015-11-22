@@ -153,3 +153,30 @@ Test.find({}).remove(function () {
     createdBy: 'camal4u@gmail.com'
   });
 });
+
+var Applicant = require('../api/applicant/applicant.model');
+
+Applicant.find({}).remove(function () {
+  Applicant.create({
+        email: 'bhavyalatha26@gmail.com',
+        firstName: 'Bhavya',
+        lastName: 'Latha',
+        info: {
+        },
+        test: {
+            testId : '56514f0e67ae3c3833611a27',
+            language: 'Java',
+            startTime: '22-11-2015 10:30:00',
+            submitTime: '22-11-2015 11:45:00',
+            endTime: '22-11-2015 12:30:00',
+            questions: [{
+                question_id: '56514f0e67ae3c3833611a27',
+                score: 45,
+                solution: ''
+            }],
+            feedback: 'pass',
+            valid: 'true'
+        },
+        invitedBy: 'pradeep122@gmail.com'
+    });
+});
