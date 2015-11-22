@@ -153,7 +153,7 @@ exports.saveSolutions = function(req, res) {
       return handleError(res, err);
     }
     if (!applicant) {
-      return res.status(404).send('Not Found');
+      return res.status(404).send('Applicant Not Found');
     }
 
     if (!applicant.test.valid) {
@@ -196,7 +196,7 @@ exports.submit = function(req, res) {
       return handleError(res, err);
     }
     if (!applicant) {
-      return res.status(404).send('Not Found');
+      return res.status(404).send('Applicant Not Found');
     }
 
     if (!applicant.test.valid) {
@@ -225,7 +225,6 @@ exports.submit = function(req, res) {
         return res.status(400).send('No Cookie Found, Application is invalidated');
       });
     }
-
 
   });
 };
