@@ -44,10 +44,6 @@ angular.module('coderScout')
                 delete $scope.loading;
             }, function(err) {
                 delete $scope.loading;
-                $location.path("/error");
-                setTimeout(function() {
-                    $rootScope.$broadcast("errorResMsgBroadcast", err);
-                }, 10);
             })
         };
 
