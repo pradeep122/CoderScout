@@ -18,7 +18,8 @@ exports.compile = function(source, language, input, callback) {
             language: language,
             sourceCode: source,
             run: true,
-            input: input
+            input: input,
+            'private': false
         }, function(err, result) {
             if (err) {
                 console.log('[ERROR]' + err);
@@ -31,14 +32,14 @@ exports.compile = function(source, language, input, callback) {
     });
 };
 
-exports.getSubmission = function(id, callback) {
+exports.getSubmission = function(id, link, callback) {
     var params = {
         user: user,
         pass: pass,
-        // id: 40215729,
-        link: id || 's8loLz',
-        withSource: true,
-        withInput: true,
+        id: id,
+        link: link,
+        withSource: false,
+        withInput: false,
         withOutput: true,
         withStderr: true,
         withCmpinfo: true

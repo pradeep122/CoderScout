@@ -331,6 +331,7 @@ exports.compile = function(req, res) {
                 questionId: req.params.questionId
             });
             applicant = _.set(applicant, 'test.questions[' + questionIndex + '].submissionLink', parsedResult.link);
+            applicant = _.set(applicant, 'test.questions[' + questionIndex + '].submissionId', parsedResult.id);
             applicant.save(function(err) {
                 if (err) {
                     return handleError(res, err);
@@ -353,8 +354,9 @@ exports.getSubmission = function(req, res) {
         if (!applicant) {
             return res.status(404).send('Applicant Not Found with id : ' + req.params.id);
         }
-        var link = req.params.link;
-        sphere.getSubmission(link, function(err, result) {
+        var link = req.body.link;
+        var id = req.body.id;
+        sphere.getSubmission(id, link, function(err, result) {
             if (err) {
                 return handleError(res, err);
             }

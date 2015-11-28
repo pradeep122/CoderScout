@@ -68,7 +68,13 @@ angular.module('coderScout')
         };
 
         function getCompilationStatus() {
-            apiRegistry.getCompilationStatus($scope.currentQuestion.link).then(function(response) {
+            var reqObj = {
+                data: {
+                    link: $scope.currentQuestion.link,
+                    id: $scope.currentQuestion.submissionId
+                }
+            }
+            apiRegistry.getCompilationStatus(reqObj).then(function(response) {
                 $interval.cancel(getCompilationStatusTask);
             }, function() {
                 $interval.cancel(getCompilationStatusTask);
@@ -101,11 +107,12 @@ angular.module('coderScout')
                 questionId: $scope.currentQuestion._id,
                 data: {
                     solution: $scope.currentQuestion.solution,
-                    input: 3
+                    input: '1\n2\n10\n42\n11'
                 }
             }
             apiRegistry.compileCode(reqObj).then(function(response) {
                 $scope.currentQuestion.link = response.data.link;
+                $scope.currentQuestion.submissionId = response.data.id;
                 getCompilationStatusTask = $interval(getCompilationStatus, 2000);
             });
         };

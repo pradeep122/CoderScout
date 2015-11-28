@@ -20,6 +20,6 @@ router.put('/:id/save', controller.saveSolutions);
 router.put('/:id/submit', controller.submit);
 
 router.post('/:id/compile/:questionId', controller.compile);
-router.post('/:id/status/:link', controller.getSubmission);
+router.post('/:id/status', controller.getSubmission);
 
 module.exports = router;

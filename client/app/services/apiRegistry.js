@@ -172,11 +172,12 @@ angular.module('coderScout')
             return deferred.promise;
         };
 
-        var getCompilationStatus = function(linkId) {
+        var getCompilationStatus = function(reqObj) {
             var deferred = $q.defer();
             $http({
                 method: "POST",
-                url: "/api/applicant/" + $rootScope.applicantId + "/status/" + linkId
+                url: "/api/applicant/" + $rootScope.applicantId + "/status",
+                data: reqObj.data
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
