@@ -11,8 +11,8 @@ var TestSchema = new Schema({
         questions: [{
         	questionId : {type : Schema.Types.ObjectId,ref : 'Question' }
         }],
-        startTime: String,
-        endTime: String,
+        startTime: Date,
+        endTime: Date,
         duration: Number,
         createdBy: String
     });
