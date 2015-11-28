@@ -5,7 +5,7 @@ var mongoose = require('mongoose'),
 
 var QuestionSchema = new Schema({
   description : String,
-  solution : String,
+  solutions : {},
   testCases : [{
   	input : String,
   	output : String,
