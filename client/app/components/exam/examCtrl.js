@@ -24,12 +24,17 @@ angular.module('coderScout')
 
         function validateApplicant() {
             apiRegistry.validateApplicant().then(function(successRes) {
-                    dataService.setApplicantData(successRes.data);
-                    var duration = successRes.data.test.duration;
-                    $scope.examDuration = new Date().getTime() + ((duration == undefined) ? (20 * 1000) : successRes.data.test.duration);
-                    getQuestions();
-                },
-                function(errorRes) {});
+                dataService.setApplicantData(successRes.data);
+                getTestDetails(successRes.data.test.testId);
+                getQuestions();
+            });
+        };
+
+        function getTestDetails(testId) {
+            apiRegistry.getTest(testId).then(function(response) {
+                var duration = response.data.duration;
+                $scope.examDuration = new Date().getTime() + ((duration == undefined) ? (2000 * 1000) : (duration * 60 * 1000));
+            });
         };
 
         function autoSaveApplicantData() {
@@ -59,8 +64,6 @@ angular.module('coderScout')
             applicantData.test.questions = getSavedQuestions();
             apiRegistry.saveApplicantData(applicantData).then(function() {
 
-            }, function() {
-
             });
         };
 
@@ -76,7 +79,7 @@ angular.module('coderScout')
                     $scope.questionsList.push(successRes.data);
                     $scope.currentQuestionIndex++;
                     $scope.currentQuestion = $scope.questionsList[$scope.currentQuestionIndex];
-                }, function(errorRes) {})
+                });
             }
         };
 
@@ -85,14 +88,21 @@ angular.module('coderScout')
             $scope.getQuestion($scope.questions[index + 1].questionId);
         };
 
+        $scope.compileCode = function() {
+            var reqObj = {
+                questionId: $scope.currentQuestion._id,
+                source: $scope.currentQuestion.solution
+            }
+            apiRegistry.compileCode(reqObj).then(function(response) {
+                console.log(response);
+            });
+        };
+
         $scope.submitApplicantData = function() {
             $interval.cancel(autoSaveTimerTask);
             var applicantData = dataService.getApplicantData();
             applicantData.test.questions = getSavedQuestions();
             apiRegistry.submitApplicantData(applicantData).then(function() {
-                $location.path('/feedback');
-            }, function() {
-                alert('Submission Failed!');
                 $location.path('/feedback');
             });
         };

@@ -36,7 +36,7 @@
                 <a class="waves-effect waves-light btn green exam-control-btns" ng-click="getQuestion(questions[currentQuestionIndex+1].questionId)" ng-disabled="currentQuestionIndex>=questions.length-1"><i class="material-icons left fa fa-step-forward " ></i>Next</a>
             </div>
             <div class="collection-item ">
-                <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-gear "></i>Run</a>
+                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="compileCode();"><i class="material-icons left fa fa-gear "></i>Run</a>
             </div>
             <div class="collection-item ">
                 <a class="waves-effect waves-light btn green exam-control-btns"><i class="material-icons left fa fa-refresh "></i>Reset</a>

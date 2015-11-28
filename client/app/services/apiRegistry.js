@@ -1,7 +1,15 @@
 'use strict';
 
 angular.module('coderScout')
-    .factory('apiRegistry', function($http, $q, $rootScope) {
+    .factory('apiRegistry', function($http, $q, $rootScope, $location) {
+        var handleError = function(err) {
+            console.log(err);
+            $location.path("/error");
+            setTimeout(function() {
+                $rootScope.$broadcast("errorResMsgBroadcast", err);
+            }, 10);
+        }
+
         var isValidInvite = function(inviteId) {
             var deferred = $q.defer();
             $http({
@@ -11,6 +19,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         }
@@ -24,6 +33,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         }
@@ -36,6 +46,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -48,6 +59,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -60,6 +72,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -71,6 +84,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -82,6 +96,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -94,6 +109,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         }
@@ -106,6 +122,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -120,6 +137,7 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
@@ -134,9 +152,28 @@ angular.module('coderScout')
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
                 deferred.reject(errorResponse);
+                handleError(errorResponse);
             });
             return deferred.promise;
         };
+
+        var compileCode = function(reqObj) {
+            var deferred = $q.defer();
+            $http({
+                method: "POST",
+                url: "/api/applicant/" + $rootScope.applicantId + "/compile/" + reqObj.questionId,
+                data: {
+                    source: reqObj.source
+                }
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+                handleError(errorResponse);
+            });
+            return deferred.promise;
+        }
+
 
         return {
             isValidInvite: isValidInvite,
@@ -149,6 +186,7 @@ angular.module('coderScout')
             validateApplicant: validateApplicant,
             createApplicant: createApplicant,
             saveApplicantData: saveApplicantData,
-            submitApplicantData: submitApplicantData
+            submitApplicantData: submitApplicantData,
+            compileCode: compileCode
         };
     });
