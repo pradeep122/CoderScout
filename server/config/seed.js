@@ -96,8 +96,8 @@ Question.find({}).remove(function() {
                 }, {
                     questionId: question2._id
                 }],
-                startTime: '21-11-2015 10:00:00',
-                endTime: '21-11-2015 12:00:00',
+                startTime: Date.now(),
+                endTime: Date.now() + (2 * 24 * 60 * 60000),
                 duration: 120,
                 createdBy: 'bhavyalatha26@gmail.com'
             }, {
@@ -107,8 +107,8 @@ Question.find({}).remove(function() {
                 }, {
                     questionId: question2._id
                 }],
-                startTime: '21-11-2015 14:00:00',
-                endTime: '21-11-2015 15:00:00',
+                startTime: Date.now(),
+                endTime: Date.now() + (2 * 24 * 60 * 60000),
                 duration: 60,
                 createdBy: 'pradeep122@gmail.com'
             }, {
@@ -118,8 +118,8 @@ Question.find({}).remove(function() {
                 }, {
                     questionId: question2._id
                 }],
-                startTime: '22-11-2015 09:00:00',
-                endTime: '22-11-2015 11:00:00',
+                startTime: Date.now(),
+                endTime: Date.now() + (2 * 24 * 60 * 60000),
                 duration: 120,
                 createdBy: 'camal4u@gmail.com'
             }, function(err, test1, test2, test3) {
