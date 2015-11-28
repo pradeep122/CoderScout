@@ -14,23 +14,23 @@ angular.module('coderScout')
         var init = function() {
             $scope.testLanguages = [{
                 name: 'Java',
-                value: 1
+                value: 10
             }, {
                 name: 'JavaScript',
-                value: 2
+                value: 56
             }, {
                 name: 'C',
-                value: 3
+                value: 11
             }, {
                 name: 'C++',
-                value: 4
+                value: 1
             }];
             $scope.userDetails = {
-                firstName: "Rohit",
-                lastName: "Kuncham",
-                test: {
-                    language: 1
-                }
+                // firstName: "Rohit",
+                // lastName: "Kuncham",
+                // test: {
+                //     language: 56
+                // }
             };
             checkValidityOfInvite();
         };

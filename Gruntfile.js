@@ -269,6 +269,9 @@ module.exports = function(grunt) {
                 patterns: {
                     js: [
                         [/(assets\/images\/.*?\.(?:gif|jpeg|jpg|png|webp|svg))/gm, 'Update the JS to reference our revved images']
+                    ],
+                    css: [
+                        [/(assets\/fonts\/.*?\.(?:eot|svg|wotff|wottf2|otf|tff))/gm, 'Update the css to reference our revved font names']
                     ]
                 }
             }
@@ -359,6 +362,7 @@ module.exports = function(grunt) {
                         'bower_components/**/*',
                         'assets/images/{,*/}*.{webp}',
                         'assets/fonts/**/*',
+                        'fonts/**/*',
                         'index.html'
                     ]
                 }, {

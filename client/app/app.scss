@@ -2,7 +2,7 @@ $icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/
 $fa-font-path: "/bower_components/font-awesome/fonts";
 @import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
 @import 'font-awesome/scss/font-awesome';
-@import 'Materialize/sass/materialize.scss';
+@import '../bower_components/Materialize/sass/materialize.scss';
 
 /**
  * App-wide Styles
@@ -21,7 +21,14 @@ $fa-font-path: "/bower_components/font-awesome/fonts";
 // endinjector
 @font-face {
     font-family: 'Slot';
-    src: url('fonts/Slot-Regular.otf');
+    src: url('../assets/fonts/Slot-Regular.otf');
+}
+
+@font-face {
+    font-family: "Material-Design-Icons";
+    src: url("../assets/fonts/Material-Design-Icons.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/Material-Design-Icons.woff2") format("woff2"), url("../assets/fonts/Material-Design-Icons.woff") format("woff"), url("../assets/fonts/Material-Design-Icons.ttf") format("truetype"), url("../assets/fonts/Material-Design-Icons.svg#Material-Design-Icons") format("svg");
+    font-weight: normal;
+    font-style: normal;
 }
 
 .logo {

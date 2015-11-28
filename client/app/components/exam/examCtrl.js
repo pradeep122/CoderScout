@@ -90,9 +90,10 @@ angular.module('coderScout')
             var applicantData = dataService.getApplicantData();
             applicantData.test.questions = getSavedQuestions();
             apiRegistry.submitApplicantData(applicantData).then(function() {
-
+                $location.path('/feedback');
             }, function() {
                 alert('Submission Failed!');
+                $location.path('/feedback');
             });
         };
 
