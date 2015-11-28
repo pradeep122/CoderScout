@@ -162,9 +162,21 @@ angular.module('coderScout')
             $http({
                 method: "POST",
                 url: "/api/applicant/" + $rootScope.applicantId + "/compile/" + reqObj.questionId,
-                data: {
-                    source: reqObj.source
-                }
+                data: reqObj.data
+            }).then(function(successResponse) {
+                deferred.resolve(successResponse);
+            }, function(errorResponse) {
+                deferred.reject(errorResponse);
+                handleError(errorResponse);
+            });
+            return deferred.promise;
+        };
+
+        var getCompilationStatus = function(linkId) {
+            var deferred = $q.defer();
+            $http({
+                method: "POST",
+                url: "/api/applicant/" + $rootScope.applicantId + "/status/" + linkId
             }).then(function(successResponse) {
                 deferred.resolve(successResponse);
             }, function(errorResponse) {
@@ -187,6 +199,7 @@ angular.module('coderScout')
             createApplicant: createApplicant,
             saveApplicantData: saveApplicantData,
             submitApplicantData: submitApplicantData,
-            compileCode: compileCode
+            compileCode: compileCode,
+            getCompilationStatus: getCompilationStatus
         };
     });
