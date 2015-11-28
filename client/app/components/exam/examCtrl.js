@@ -2,7 +2,7 @@
 
 angular.module('coderScout')
     .controller('examCtrl', function($scope, dataService, apiRegistry, $location, $interval) {
-        var autoSaveTimerTask;
+        var autoSaveTimerTask, getCompilationStatusTask;
 
         function init() {
             validateApplicant();
@@ -67,6 +67,14 @@ angular.module('coderScout')
             });
         };
 
+        function getCompilationStatus() {
+            apiRegistry.getCompilationStatus($scope.currentQuestion.link).then(function(response) {
+                $interval.cancel(getCompilationStatusTask);
+            }, function() {
+                $interval.cancel(getCompilationStatusTask);
+            });
+        };
+
         $scope.getQuestion = function(id) {
             var question = _.findWhere($scope.questionsList, {
                 _id: id
@@ -91,10 +99,14 @@ angular.module('coderScout')
         $scope.compileCode = function() {
             var reqObj = {
                 questionId: $scope.currentQuestion._id,
-                source: $scope.currentQuestion.solution
+                data: {
+                    solution: $scope.currentQuestion.solution,
+                    input: 3
+                }
             }
             apiRegistry.compileCode(reqObj).then(function(response) {
-                console.log(response);
+                $scope.currentQuestion.link = response.data.link;
+                getCompilationStatusTask = $interval(getCompilationStatus, 2000);
             });
         };
 
