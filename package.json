@@ -12,13 +12,14 @@
     "errorhandler": "~1.0.0",
     "express": "~4.9.0",
     "express-session": "~1.0.2",
-    "lodash": "~2.4.1",
+    "lodash": "~3.10.1",
     "method-override": "~1.0.0",
     "mongoose": "~4.0.3",
     "morgan": "~1.0.0",
     "pubnub": "^3.7.16",
     "sendgrid": "^1.9.2",
-    "serve-favicon": "~2.0.1"
+    "serve-favicon": "~2.0.1",
+    "soap": "^0.11.0"
   },
   "devDependencies": {
     "grunt": "~0.4.4",

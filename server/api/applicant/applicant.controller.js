@@ -1,10 +1,12 @@
 'use strict';
 
 var _ = require('lodash');
+var util = require('util');
 var Applicant = require('./applicant.model');
 var Test = require('../test/test.model');
 var Question = require('../question/question.model');
 var Invitation = require('../invitation/invitation.model');
+var sphere = require('../../components/sphere');
 
 // Get list of applicants
 exports.index = function(req, res) {
@@ -174,10 +176,10 @@ exports.saveSolutions = function(req, res) {
       }
     } else {
       applicant.test.valid = false;
-      applicant.save(function (err) {
-          if (err) {
-            return handleError(res, err);
-          }
+      applicant.save(function(err) {
+        if (err) {
+          return handleError(res, err);
+        }
         return res.status(400).send('No Cookie Found, Application is invalidated');
       });
     }
@@ -218,10 +220,10 @@ exports.submit = function(req, res) {
       }
     } else {
       applicant.test.valid = false;
-      applicant.save(function (err) {
-          if (err) {
-            return handleError(res, err);
-          }
+      applicant.save(function(err) {
+        if (err) {
+          return handleError(res, err);
+        }
         return res.status(400).send('No Cookie Found, Application is invalidated');
       });
     }
@@ -289,7 +291,7 @@ exports.invalidate = function(req, res) {
       return handleError(res, err);
     }
     if (!applicant) {
-      return res.status(404).send('Not Found');
+      return res.status(404).send('Applicant Not Found with id : ' + req.params.id);
     }
     applicant.test.valid = false;
     applicant.save(function(err) {
@@ -302,6 +304,82 @@ exports.invalidate = function(req, res) {
   });
 };
 
+exports.compile = function(req, res) {
+  Applicant.findOne({
+    email: req.params.id
+  }, function(err, applicant) {
+
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Applicant Not Found with id : ' + req.params.id);
+    }
+    var source = req.body.source;
+    sphere.compile(source, applicant.test.language, function(err, result) {
+      if (err) {
+        return handleError(res, err);
+      }
+      if (!result) {
+        return res.status(404).send('Unable to compile code on Sphere Engine');
+      }
+      console.log(util.inspect(req.body, 5));
+      var parsedResult = parseSoapResult(result);
+
+      var questionIndex = _.findIndex(applicant.test.questions, {
+        questionId: req.params.questionId
+      });
+      applicant = _.set(applicant, 'test.questions[' + questionIndex + '].submissionLink', parsedResult.link);
+      applicant.save(function(err) {
+        if (err) {
+          return handleError(res, err);
+        };
+        return res.status(200).json(parsedResult);
+      });
+    });
+  });
+
+}
+
+exports.getSubmission = function(req, res) {
+  Applicant.findOne({
+    email: req.params.id
+  }, function(err, applicant) {
+
+    if (err) {
+      return handleError(res, err);
+    }
+    if (!applicant) {
+      return res.status(404).send('Applicant Not Found with id : ' + req.params.id);
+    }
+    var link = req.params.link;
+    sphere.getSubmission(link, function(err, result) {
+      if (err) {
+        return handleError(res, err);
+      }
+      if (!result) {
+        return res.status(404).send('Unable to compile code on Sphere Engine');
+      }
+
+
+      var parsedResult = parseSoapResult(result);
+
+
+      var questionIndex = _.findIndex(applicant.test.questions, {
+        submissionlink: req.params.link
+      });
+
+      applicant = _.set(applicant, 'test.questions[' + questionIndex + '].submission' + parsedResult);
+      applicant.save(function(err) {
+        if (err) {
+          return handleError(res, err);
+        };
+        return res.status(200).json(parsedResult);
+      });
+    });
+  });
+
+}
 
 function sendPubNub(valid, id) {
   var pubnub = require("pubnub")({
@@ -324,4 +402,15 @@ function sendPubNub(valid, id) {
     }
   });
 
+}
+
+function parseSoapResult (input) {
+  var result = {};
+
+  _.each(input.return.item, function (item) {
+      result[item.key.$value] = item.value.$value;
+  });
+
+  console.log(util.inspect(result));
+  return result;
 }

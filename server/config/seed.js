@@ -301,7 +301,7 @@ Question.find({}).remove(function() {
                                 lastName: 'Latha',
                                 test: {
                                     testId: invitation1.testId,
-                                    language: 'Java',
+                                    language: 10,
                                     startTime: Date.now(),
                                     endTime: Date.now() + (test1.duration * 60000),
                                     questions: [{

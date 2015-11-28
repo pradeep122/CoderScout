@@ -33,15 +33,14 @@ function sendEmail(email, key) {
 
 // Get list of invitations
 exports.index = function(req, res) {
-  Invitation.find(function(err, invitations) {
-    if (err) {
-      return handleError(res, err);
-    }
-    return res.status(200).json(invitations);
-  });
-};
-
-// Get a single invitation
+    Invitation.find(function(err, invitations) {
+      if (err) {
+        return handleError(res, err);
+      }
+      return res.status(200).json(invitations);
+    });
+  };
+  // Get a single invitation
 exports.show = function(req, res) {
   Invitation.findById(req.params.id, function(err, invitation) {
     if (err) {
@@ -50,6 +49,7 @@ exports.show = function(req, res) {
     if (!invitation) {
       return res.status(404).send('Not Found');
     }
+
     return res.json(invitation);
   });
 };

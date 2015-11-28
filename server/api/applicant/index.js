@@ -18,4 +18,8 @@ router.get('/validate/:id', controller.validate);
 router.post('/create', controller.createApplicant);
 router.put('/:id/save', controller.saveSolutions);
 router.put('/:id/submit', controller.submit);
+
+router.post('/:id/compile/:questionId', controller.compile);
+router.post('/:id/status/:link', controller.getSubmission);
+
 module.exports = router;
