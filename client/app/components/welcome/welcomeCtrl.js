@@ -36,11 +36,14 @@ angular.module('coderScout')
         };
 
         var checkValidityOfInvite = function() {
+            $scope.loading = true;
             createCookie();
             apiRegistry.isValidInvite($stateParams.inviteId).then(function(successRes) {
                 testId = successRes.data.testId;
-                validInvite = successRes.data
+                validInvite = successRes.data;
+                delete $scope.loading;
             }, function(err) {
+                delete $scope.loading;
                 $location.path("/error");
                 setTimeout(function() {
                     $rootScope.$broadcast("errorResMsgBroadcast", err);
