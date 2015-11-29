@@ -25,7 +25,7 @@ angular.module('coderScout')
                 name: 'C++',
                 value: 1
             }];
-            $scope.userDetails = {
+            $rootScope.userDetails = {
                 // firstName: "Rohit",
                 // lastName: "Kuncham",
                 // test: {
@@ -53,9 +53,9 @@ angular.module('coderScout')
         }
 
         $scope.createApplicant = function() {
-            $scope.userDetails.invitation = validInvite;
+            $rootScope.userDetails.invitation = validInvite;
             $rootScope.applicantId = validInvite.email;
-            apiRegistry.createApplicant($scope.userDetails).then(function(successRes) {
+            apiRegistry.createApplicant($rootScope.userDetails).then(function(successRes) {
                 $location.path("/exam");
             }, function(errorRes) {})
         }
