@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('coderScout')
-    .controller('examCtrl', function($scope, dataService, apiRegistry, $location, $interval) {
+    .controller('examCtrl', function($scope, dataService, apiRegistry, $location, $interval, $rootScope) {
         var autoSaveTimerTask, getCompilationStatusTask;
 
         function init() {
@@ -75,10 +75,18 @@ angular.module('coderScout')
                 }
             }
             apiRegistry.getCompilationStatus(reqObj).then(function(response) {
+                $scope.currentQuestion.compiledOutput = response.data;
                 $interval.cancel(getCompilationStatusTask);
             }, function() {
                 $interval.cancel(getCompilationStatusTask);
             });
+        };
+
+        $scope.setSolutionTemplate = function() {
+            var languageIndex = $rootScope.userDetails.test.language;
+            var solution = $scope.currentQuestion.solutions[languageIndex];
+            $scope.currentQuestion.solution = solution || '';
+            $scope.currentQuestion.input = $scope.currentQuestion.testCases[0].input;
         };
 
         $scope.getQuestion = function(id) {
@@ -87,12 +95,14 @@ angular.module('coderScout')
             });
             if (question) {
                 $scope.currentQuestion = question;
-                $scope.currentQuestionIndex = _.indexOf($scope.questionsList, question);
+                $scope.solution = $scope.currentQuestionIndex = _.indexOf($scope.questionsList, question);
+                $scope.setSolutionTemplate();
             } else {
                 apiRegistry.getQuestion(id).then(function(successRes) {
                     $scope.questionsList.push(successRes.data);
                     $scope.currentQuestionIndex++;
                     $scope.currentQuestion = $scope.questionsList[$scope.currentQuestionIndex];
+                    $scope.setSolutionTemplate();
                 });
             }
         };
@@ -107,9 +117,10 @@ angular.module('coderScout')
                 questionId: $scope.currentQuestion._id,
                 data: {
                     source: $scope.currentQuestion.solution,
-                    input: '1\n2\n10\n42\n11'
+                    input: $scope.currentQuestion.input
                 }
-            }
+            };
+            if ($scope.currentQuestion.compiledOutput) delete $scope.currentQuestion.compiledOutput;
             apiRegistry.compileCode(reqObj).then(function(response) {
                 $scope.currentQuestion.link = response.data.link;
                 $scope.currentQuestion.submissionId = response.data.id;

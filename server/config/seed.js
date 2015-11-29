@@ -39,38 +39,38 @@ var Question = require('../api/question/question.model');
 
 Question.find({}).remove(function() {
     Question.create({
-        description: '<h1>Problem Statement</h1><p> Would you want to fight against bears who ride horses? Me neither. </p><p>Limak is a grizzly bear. He is a general of the dreadful army of Bearland. The most important part of the army is, of course, the cavalry.</p><p>The cavalry of Bearland consists of the same number of warriors and horses. Limak knows the strength of each warrior and also the strength of each horse. These are given in int[]s warriors and horses, respectively.</p><p>General Limak must assign exactly one horse to each warrior. Obviously, different warriors must be given different horses.</p><p>A warrior together with his assigned horse is called a unit. The strength of a unit is equal to the product of the strengths of the warrior and the horse that form the unit.</p><p>The warrior that corresponds to element 0 in warriors is called Bravebeart. He is always the first to charge the enemy. Limak decided that Bravebeart deserves some respect. Thus, his unit must be strictly stronger than any other unit. (Ties are not allowed.)</p><p>Given this constraint, let X be the number of valid ways in which Limak can create the units. A general must know everything about his army. Help Limak count the valid assignments. Compute and return the value (X modulo 1,000,000,007).</p> <h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>BearCavalry</td>  </tr>  <tr>    <td>Method:</td> <td>countAssignments</td>  </tr>  <tr>    <td>Parameters:</td> <td>int[], int[]</td>  </tr>  <tr>    <td>Returns:</td> <td>int</td>  </tr>  <tr>    <td>Method signature:</td> <td>int countAssignments(int[] warriors, int[] horses)  (be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2><ul> <li>warriors will contain between 2 and 50 elements, inclusive. </li><li>warriors and horses will contain the same number of elements.</li><li>Each element in warriors and in horses will be between 1 and 1000, inclusive. </li></ul><h2>Example </h2>        <p> {5,8,4,8} </p><p>{19,40,25,20}</p><p>Returns: 2</p><p></p><p>There are four warriors and four horses for them. Bravebeart\'s strength is warriors[0] = 5.</p><p></p><p>There are two valid ways to pair the warriors and horses into units. Below, each unit is presented as an ordered pair (warrior\'s strength, horse\'s strength). The warriors are presented in the same order as in warriors.</p><p></p><p>Valid assignment #1: (5,40), (8,19), (4,25), (8,20).</p><p></p><p>Valid assignment #2: (5,40), (8,20), (4,25), (8,19).</p><p></p><p>In assignment #1, the strength of Bravebeart\'s unit is 5 * 40 = 200. The other three units have strengths 8 * 19 = 152, 4 * 25 = 100, and 8 * 20 = 160. This is a valid assignment because the number 200 is strictly greater than each of the numbers 152, 100, and 160. < /p>',
+        description: '<div class="qsn"><h1 class="qsn-header">Problem Statement</h1><p> Would you want to fight against bears who ride horses? Me neither. </p><p>Limak is a grizzly bear. He is a general of the dreadful army of Bearland. The most important part of the army is, of course, the cavalry.</p><p>The cavalry of Bearland consists of the same number of warriors and horses. Limak knows the strength of each warrior and also the strength of each horse. These are given in int[]s warriors and horses, respectively.</p><p>General Limak must assign exactly one horse to each warrior. Obviously, different warriors must be given different horses.</p><p>A warrior together with his assigned horse is called a unit. The strength of a unit is equal to the product of the strengths of the warrior and the horse that form the unit.</p><p>The warrior that corresponds to element 0 in warriors is called Bravebeart. He is always the first to charge the enemy. Limak decided that Bravebeart deserves some respect. Thus, his unit must be strictly stronger than any other unit. (Ties are not allowed.)</p><p>Given this constraint, let X be the number of valid ways in which Limak can create the units. A general must know everything about his army. Help Limak count the valid assignments. Compute and return the value (X modulo 1,000,000,007).</p> <h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>BearCavalry</td>  </tr>  <tr>    <td>Method:</td> <td>countAssignments</td>  </tr>  <tr>    <td>Parameters:</td> <td>int[], int[]</td>  </tr>  <tr>    <td>Returns:</td> <td>int</td>  </tr>  <tr>    <td>Method signature:</td> <td>int countAssignments(int[] warriors, int[] horses)  (be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2><ul> <li>warriors will contain between 2 and 50 elements, inclusive. </li><li>warriors and horses will contain the same number of elements.</li><li>Each element in warriors and in horses will be between 1 and 1000, inclusive. </li></ul><h2>Example </h2>        <p> {5,8,4,8} </p><p>{19,40,25,20}</p><p>Returns: 2</p><p></p><p>There are four warriors and four horses for them. Bravebeart\'s strength is warriors[0] = 5.</p><p></p><p>There are two valid ways to pair the warriors and horses into units. Below, each unit is presented as an ordered pair (warrior\'s strength, horse\'s strength). The warriors are presented in the same order as in warriors.</p><p></p><p>Valid assignment #1: (5,40), (8,19), (4,25), (8,20).</p><p></p><p>Valid assignment #2: (5,40), (8,20), (4,25), (8,19).</p><p></p><p>In assignment #1, the strength of Bravebeart\'s unit is 5 * 40 = 200. The other three units have strengths 8 * 19 = 152, 4 * 25 = 100, and 8 * 20 = 160. This is a valid assignment because the number 200 is strictly greater than each of the numbers 152, 100, and 160. < /p></div>',
         solutions: {
-            '10': '/*package whatever; // don\'t place package name! */' +
-                'import java.util.*;' +
-                'import java.lang.*;' +
-                'import java.io.*;' +
-                '/* Name of the class has to be "Main" only if the class is public. */' +
-                'class CoderScout' +
-                '{' +
-                ' public static void main (String[] args) throws java.lang.Exception' +
-                ' {' +
+            '10': '/*package whatever; // don\'t place package name! */\n' +
+                'import java.util.*;\n' +
+                'import java.lang.*;\n' +
+                'import java.io.*;\n' +
+                '/* Name of the class has to be "Main" only if the class is public. */\n' +
+                'class CoderScout\n' +
+                '{\n' +
+                ' public static void main (String[] args) throws java.lang.Exception\n' +
+                ' {\n' +
                 ' // your code goes here' +
-                ' }' +
-                '}',
-            '56': 'process.stdin.resume();' +
-                'process.stdin.setEncoding(\'utf8\');' +
-                'var remainder = \'\'' +
-                'process.stdin.on(\'data\', function (chunk) {' +
-                ' var lines = chunk.toString().split(\'\n\');' +
-                ' process.exit();' +
-                '});',
-            '11': '#include <stdio.h>' +
-                'int main(void) {' +
-                ' // your code goes here' +
-                ' return 0;' +
-                '}',
-            '1': '#include <iostream>' +
-                'using namespace std;' +
-                'int main() {' +
-                '// your code goes here' +
-                'return 0;' +
-                '}'
+                ' }\n' +
+                '}\n',
+            '56': 'process.stdin.resume();\n' +
+                'process.stdin.setEncoding(\'utf8\');\n' +
+                'var remainder = \'\'\n' +
+                'process.stdin.on(\'data\', function (chunk) {\n' +
+                ' var lines = chunk.toString().split(\'\n\');\n' +
+                ' process.exit();\n' +
+                '});\n',
+            '11': '#include <stdio.h>\n' +
+                'int main(void) {\n' +
+                ' // your code goes here\n' +
+                ' return 0;\n' +
+                '}\n',
+            '1': '#include <iostream>\n' +
+                'using namespace std;\n' +
+                'int main() {\n' +
+                '// your code goes here\n' +
+                'return 0;\n' +
+                '}\n'
         },
         testCases: [{
             input: '{5,8,4,8}\n{19,40,25,20}',
