@@ -106,14 +106,14 @@ angular.module('coderScout')
             var reqObj = {
                 questionId: $scope.currentQuestion._id,
                 data: {
-                    solution: $scope.currentQuestion.solution,
+                    source: $scope.currentQuestion.solution,
                     input: '1\n2\n10\n42\n11'
                 }
             }
             apiRegistry.compileCode(reqObj).then(function(response) {
                 $scope.currentQuestion.link = response.data.link;
                 $scope.currentQuestion.submissionId = response.data.id;
-                getCompilationStatusTask = $interval(getCompilationStatus, 2000);
+                getCompilationStatusTask = $interval(getCompilationStatus, 5000);
             });
         };
 
