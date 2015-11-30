@@ -25,7 +25,7 @@ exports.compile = function(source, language, input, callback) {
                 console.log('[ERROR]' + err);
                 callback(err);
             } else {
-                console.log('SUCESS while compiling on Sphere Engine');
+                // console.log('SUCESS while compiling on Sphere Engine');
                 callback(null, result);
             }
         });
@@ -38,8 +38,8 @@ exports.getSubmission = function(id, link, callback) {
         pass: pass,
         id: id,
         link: link,
-        withSource: false,
-        withInput: false,
+        withSource: true,
+        withInput: true,
         withOutput: true,
         withStderr: true,
         withCmpinfo: true
@@ -50,7 +50,7 @@ exports.getSubmission = function(id, link, callback) {
                 console.log('[ERROR]' + err);
                 callback(err);
             } else {
-                console.log('SUCESS while fetching Sphere Engine result');
+                // console.log('SUCESS while fetching Sphere Engine result');
                 callback(null, result);
             }
         });

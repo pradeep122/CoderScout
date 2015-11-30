@@ -19,7 +19,10 @@ router.post('/create', controller.createApplicant);
 router.put('/:id/save', controller.saveSolutions);
 router.put('/:id/submit', controller.submit);
 
+
 router.post('/:id/compile/:questionId', controller.compile);
 router.post('/:id/status', controller.getSubmission);
+
+router.post('/:id/score', controller.calculateScore);
 
 module.exports = router;
