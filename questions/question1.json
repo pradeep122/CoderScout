@@ -1,36 +1,36 @@
 {
-  "description": "<h1>Problem Statement</h1><p>There are N friends sitting in a circle, numbered clockwise in increasing order from 1 to N. At the beginning of the game, player 1 receives a ball. The players take turns passing the ball to each other. At the beginning of the game and before each next pass the following actions are performed. If the player with the ball has already received the ball M times, the game is over. Otherwise, if the player has received the ball p times, he'll pass the ball directly to the person L places to his left if p is even, or L places to his right if p is odd (see examples for clarification). Given N, M and L, return the number of times that the ball is passed.</p><h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>ThrowTheBall</td>  </tr>  <tr>    <td>Method:</td> <td>timesThrown</td>  </tr>  <tr>    <td>Parameters:</td> <td>int, int, int</td>  </tr>  <tr>    <td>Returns:</td> <td>int</td>  </tr>  <tr>    <td>Method signature:</td> <td>int timesThrown(int N, int M, int L)    (be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2><ul> <li>N will be between 3 and 50, inclusive.</li><li>M will be between 1 and 50, inclusive.</li><li>L will be between 1 and N-1, inclusive.</li></ul><h2>Example </h2><p>5 </p><p>3</p><p>2</p>Returns: 10</p><p></p><p>First, player 1 gets the ball. Since he has held the ball 1 time, he passes the ball to player 4, who is two places to his right. This is player 4's first time holding the ball, so he gives it to player 2, who passes it to player 5. Player 5 then passes the ball to player 3, who passes it back to player 1. Since player 1 has now held the ball 2 times, he passes it to player 3, who passes it to player 5, who then passes the ball to player 2. Finally, player 2 passes the ball to player 4, who then passes it to player 1. Player 1 has now held the ball 3 times, and the game ends.</p>",
-  "solutions": {
-    "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
-    "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
-    "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
-    "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
-  },
-  "testCases": [{
-    "input": "5\n3\n2",
-    "output": "10",
-    "weightage": 1
-  },{
-    "input": "11\n50\n10",
-    "output": "539",
-    "weightage": 2
-  },{
-    "input": "31\n7\n28",
-    "output": "186",
-    "weightage": 2
-  },{
-    "input": "11\n1\n10",
-    "output": "0",
-    "weightage": 2
-  },{
-    "input": "10\n9\n4",
-    "output": "40",
-    "weightage": 2
-  },{
-    "input": "4\n2\n2",
-    "output": "2",
-    "weightage": 2
-  }],
-  "createdBy": "pradeep@coderscout.co",
-  "score": 75
+    "description": "<h1>Problem Statement</h1><p>There are N friends sitting in a circle, numbered clockwise in increasing order from 1 to N. At the beginning of the game, player 1 receives a ball. The players take turns passing the ball to each other. At the beginning of the game and before each next pass the following actions are performed. If the player with the ball has already received the ball M times, the game is over. Otherwise, if the player has received the ball p times, he'll pass the ball directly to the person L places to his left if p is even, or L places to his right if p is odd (see examples for clarification). Given N, M and L, return the number of times that the ball is passed.</p><h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>ThrowTheBall</td>  </tr>  <tr>    <td>Method:</td> <td>timesThrown</td>  </tr>  <tr>    <td>Parameters:</td> <td>int, int, int</td>  </tr>  <tr>    <td>Returns:</td> <td>int</td>  </tr>  <tr>    <td>Method signature:</td> <td>int timesThrown(int N, int M, int L)    (be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2><ul> <li>N will be between 3 and 50, inclusive.</li><li>M will be between 1 and 50, inclusive.</li><li>L will be between 1 and N-1, inclusive.</li></ul><h2>Example </h2><p>5 </p><p>3</p><p>2</p>Returns: 10</p><p></p><p>First, player 1 gets the ball. Since he has held the ball 1 time, he passes the ball to player 4, who is two places to his right. This is player 4's first time holding the ball, so he gives it to player 2, who passes it to player 5. Player 5 then passes the ball to player 3, who passes it back to player 1. Since player 1 has now held the ball 2 times, he passes it to player 3, who passes it to player 5, who then passes the ball to player 2. Finally, player 2 passes the ball to player 4, who then passes it to player 1. Player 1 has now held the ball 3 times, and the game ends.</p>",
+    "solutions": {
+        "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
+        "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
+        "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
+        "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
+    },
+    "testCases": [{
+        "input": "5\n3\n2",
+        "output": "10",
+        "weightage": 1
+    }, {
+        "input": "11\n50\n10",
+        "output": "539",
+        "weightage": 2
+    }, {
+        "input": "31\n7\n28",
+        "output": "186",
+        "weightage": 2
+    }, {
+        "input": "11\n1\n10",
+        "output": "0",
+        "weightage": 2
+    }, {
+        "input": "10\n9\n4",
+        "output": "40",
+        "weightage": 2
+    }, {
+        "input": "4\n2\n2",
+        "output": "2",
+        "weightage": 2
+    }],
+    "createdBy": "pradeep@coderscout.co",
+    "score": 75
 }

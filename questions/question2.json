@@ -1,0 +1,36 @@
+{
+    "description": "<h1>Problem Statement</h1> <p>You are sitting in front of a mirror and looking at the image of a clock located behind you. You want to know what time it is. The clock is a traditional clock with a 12-hour board (without numbers written on it), a minute and an hour hand (the hour hand is shorter, so that you can distuniguish them). You are given a String time denoting the time as it is seen in the mirror. The time will be formatted as ' HH: MM ' (quotes for clarity), where HH is the two digit hour and MM is the two digit minute. The hour will be between 00 and 11, inclusive, where 00 represents 12 o' clock. Return a String in the same format denoting the actual time. See examples for further clarification.</p> <h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>MirroredClock</td>  </tr>  <tr>    <td>Method:</td> <td>whatTimeIsIt</td>  </tr>  <tr>    <td>Parameters:</td> <td>String</td>  </tr>  <tr>    <td>Returns:</td> <td>String</td>  </tr>  <tr>    <td>Method signature:</td> <td>String whatTimeIsIt(String time)(be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2> <ul> <li>time will be formatted as ' HH: MM ' (quotes for clarity), where HH is a two digit integer between 00 and 11, inclusive, and MM is a two digit integer between 00 and 59, inclusive.</li> </ul> <h2>Example </h2> <p>' 10: 00 '</p> <p>' 02: 00 '</p>",
+    "solutions": {
+        "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
+        "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
+        "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
+        "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
+    },
+    "testCases": [{
+        "input": "01:15",
+        "output": "10:45",
+        "weightage": 1
+    }, {
+        "input": "00:00",
+        "output": "00:00",
+        "weightage": 2
+    }, {
+        "input": "09:59",
+        "output": "02:01",
+        "weightage": 2
+    }, {
+        "input": "11:00",
+        "output": "01:00",
+        "weightage": 2
+    }, {
+        "input": "00:40",
+        "output": "11:20",
+        "weightage": 2
+    }, {
+        "input": "07:49",
+        "output": "04:11",
+        "weightage": 2
+    }],
+    "createdBy": "pradeep@coderscout.co",
+    "score": 50
+}
