@@ -1,0 +1,36 @@
+{
+    "description": "<h1>Problem Statement</h1> <p>You are writing a simple text editor, and one of the features you need to implement is a text search. Given a pattern, the search mechanism should return the position of its first occurrence, starting from the current position, or indicate that the pattern cannot be found. Searches are case sensitive, and do not wrap. The search dialog contains a text box and a checkbox labeled 'Whole Word'. When the 'Whole Word' option is selected, the matched sequence must either be preceded by a space to its left or be at the very beginning of the text. Similarly, it must also either be followed by a space to its right or be at the very end of the text. </p> <p> You are given a String text consisting of letters and spaces. You are also given a String search, a sequence of letters representing the search pattern, and a String wholeWord, which is either 'Y' or 'N', indicating whether or not the 'Whole Word' option is checked. An int start represents the current position in the text from where you start searching. Return the index of the first match, or -1 if there is none. The index of the match here means the index of its first character. Both the starting index and the return index are zero based. </p>",
+    "solutions": {
+        "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
+        "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
+        "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
+        "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
+    },
+    "testCases": [{
+        "input": "'We dont need no education'\n'ed'\n'N'\n13",
+        "output": "16",
+        "weightage": 1
+    }, {
+        "input": "'We dont need no thought control'\n'We'\n'Y'\n0",
+        "output": "0",
+        "weightage": 2
+    }, {
+        "input": "'No dark sarcasm in the classroom'\n'The'\n'Y'\n5",
+        "output": "-1",
+        "weightage": 2
+    }, {
+        "input": "'Teachers leave them kids alone'\n'kid'\n'Y'\n1",
+        "output": "-1",
+        "weightage": 2
+    }, {
+        "input": "'All in all its just another brick in the wall'\n'all'\n'Y'\n9",
+        "output": "-1",
+        "weightage": 2
+    }, {
+        "input": "'All in all youre just another brick in the wall'\n'just'\n'Y'\n17",
+        "output": "17",
+        "weightage": 2
+    }],
+    "createdBy": "pradeep@coderscout.co",
+    "score": 75
+}

@@ -1,0 +1,28 @@
+{
+    "description": "<h1>Problem Statement</h1><p>SMS messages are short messages sent between mobile phones. The maximum length of a single message is 160 characters, so it is often necessary to abbreviate words.</p><p>You are given a String text, and your task is to translate it to SMS language according to the following rules:</p><ul>  <li>Remove all punctuation symbols ('.', ',', '?' and '!').</li><li>Replace all uppercase letters with their lowercase equivalents.</li><li>Replace all occurrences of 'and' with '&'.</li><li>Replace all occurrences of 'ate' with '8'.</li><li>Replace all occurrences of 'at' with '@'.</li><li>Replace all occurrences of 'you' with 'U'.</li></ul></p><p>All quotes are for clarity only. The rules must be applied in the order they appear in the list. For example, 'I HATE rats, and you?'will be translated to 'i h8 r@s & U'.</p><p>Return the resulting translation as a String.</p><h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>SMSLanguage</td>  </tr>  <tr>    <td>Method:</td> <td>translate</td>  </tr>  <tr>    <td>Parameters:</td> <td>String</td>  </tr>  <tr>    <td>Returns:</td> <td>String</td>  </tr>  <tr>    <td>Method signature:</td> <td>    String translate(String text)(be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2><ul><li>text will contain between 1 and 50 characters, inclusive.</li><li>text will contain only letters ('a'-'z', 'A'-'Z'), the characters ',', '.', '!', '?', and spaces (' ').</li></ul><h2>Example </h2><p> I HATE rats, and you? </p><p>Returns: i h8 r@s & U</p>",
+    "solutions": {
+        "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
+        "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
+        "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
+        "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
+    },
+    "testCases": [{
+        "input": "I HATE rats, and you?",
+        "output": "i h8 r@s & U",
+        "weightage": 2
+    }, {
+        "input": "What is the weather like today?",
+        "output": "wh@ is the we@her like today",
+        "weightage": 3
+    }, {
+        "input": "It is not too late to..",
+        "output": "it is not too l8 to",
+        "weightage": 3
+    }, {
+        "input": "this text is already in sms language",
+        "output": "this text is already in sms language",
+        "weightage": 3
+    }],
+    "createdBy": "pradeep@coderscout.co",
+    "score": 50
+}
