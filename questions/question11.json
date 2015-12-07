@@ -1,0 +1,36 @@
+{
+    "description": "<h1>Problem Statement</h1> <p>Kirino has found a game in which she has to feed electronic pets. There are two pets in the game. You are given six ints st1,p1,t1,st2,p2,t2. To win the game, Kirino must satisfy the following rules: <p> <ul> <li>She must feed her first pet for the first time precisely at the time st1.</li> <li>There must be exactly p1 seconds between any two consecutive feedings of the first pet.</li> <li>She must feed the first pet exactly t1 times.</li> <li>She must feed her second pet for the first time precisely at the time st2.</li> <li>There must be exactly p2 seconds between any two consecutive feedings of the second pet.</li> <li>She must feed the second pet exactly t2 times.</li> </ul> </p> <p>Feeding the pets is easy if Kirino never needs to feed both pets at the same time. Return 'Easy' (quotes for clarity) if feeding the pets is easy for the given inputs. Otherwise, return 'Difficult'. Note that the return value is case-sensitive.</p> </p> <h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>ElectronicPetEasy</td>  </tr>  <tr>    <td>Method:</td> <td>isDifficult</td>  </tr>  <tr>    <td>Parameters:</td> <td>	int, int, int, int, int, int</td>  </tr>  <tr>    <td>Returns:</td> <td>String</td>  </tr>  <tr>    <td>Method signature:</td> <td>String isDifficult(int st1, int p1, int t1, int st2, int p2, int t2)(be sure your method is public)</td>  </tr></table>   <h2>Constraints </h2> <ul> <li>st1, p1, t1, st2, p2, and t2 will be between 1 and 1,000, inclusive.</li> </ul> <h2>Example </h2> <p>3 3 3 5 2 3</p> <p>Returns: 'Difficult' Kirino must feed her first pet at the times 3, 6, and 9. She must feed her second pet at the times 5, 7, and 9. Feeding these two pets is difficult because she needs to feed both of them at the same time (at time 9).</p>",
+    "solutions": {
+        "10": "/*package whatever; // don't place package name! */\nimport java.util.*;\nimport java.lang.*;\nimport java.io.*;\n/* Name of the class has to be \"Main\" only if the class is public. */\nclass CoderScout\n{\n public static void main (String[] args) throws java.lang.Exception\n {\n // your code goes here }\n}\n",
+        "56": "process.stdin.resume();\nprocess.stdin.setEncoding('utf8');\nvar remainder = ''\nprocess.stdin.on('data', function (chunk) {\n var lines = chunk.toString().split('\n');\n process.exit();\n});\n",
+        "11": "#include <stdio.h>\nint main(void) {\n // your code goes here\n return 0;\n}\n",
+        "1": "#include <iostream>\nusing namespace std;\nint main() {\n// your code goes here\nreturn 0;\n}\n"
+    },
+    "testCases": [{
+        "input": "3, 3, 3, 5, 2, 3",
+        "output": "Difficult",
+        "weightage": 1
+    }, {
+        "input": "	3, 3, 3, 5, 2, 2",
+        "output": "Easy",
+        "weightage": 2
+    }, {
+        "input": "1, 1000, 1000, 2, 1000, 1000",
+        "output": "Easy",
+        "weightage": 2
+    }, {
+        "input": "119, 83, 930, 542, 834, 116",
+        "output": "Difficult",
+        "weightage": 2
+    }, {
+        "input": "901, 592, 763, 656, 411, 360",
+        "output": "Difficult",
+        "weightage": 2
+    }, {
+        "input": "1, 1, 999, 1000, 1, 1000",
+        "output": "Easy",
+        "weightage": 2
+    }],
+    "createdBy": "pradeep@coderscout.co",
+    "score": 75
+}
