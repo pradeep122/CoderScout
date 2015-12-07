@@ -1,28 +1,24 @@
 <h1>Problem Statement</h1>
-<p> Would you want to fight against bears who ride horses? Me neither. </p>
-<p>Limak is a grizzly bear. He is a general of the dreadful army of Bearland. The most important part of the army is, of course, the cavalry.</p>
-<p>The cavalry of Bearland consists of the same number of warriors and horses. Limak knows the strength of each warrior and also the strength of each horse. These are given in int[]s warriors and horses, respectively.</p>
-<p>General Limak must assign exactly one horse to each warrior. Obviously, different warriors must be given different horses.</p>
-<p>A warrior together with his assigned horse is called a unit. The strength of a unit is equal to the product of the strengths of the warrior and the horse that form the unit.</p>
-<p>The warrior that corresponds to element 0 in warriors is called Bravebeart. He is always the first to charge the enemy. Limak decided that Bravebeart deserves some respect. Thus, his unit must be strictly stronger than any other unit. (Ties are not allowed.)</p>
-<p>Given this constraint, let X be the number of valid ways in which Limak can create the units. A general must know everything about his army. Help Limak count the valid assignments. Compute and return the value (X modulo 1,000,000,007).</p>
-<h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>BearCavalry</td>  </tr>  <tr>    <td>Method:</td> <td>countAssignments</td>  </tr>  <tr>    <td>Parameters:</td> <td>nt[], int[]</td>  </tr>  <tr>    <td>Returns:</td> <td>int</td>  </tr>  <tr>    <td>Method signature:</td> <td>int countAssignments(int[] warriors, int[] horses)  (be sure your method is public)</td>  </tr></table>   <h2>Constraints</h2>
+<p>
+    In Russia, the Value Added Tax is 18% for almost all goods, with the exception of certain food items, which have a Value Added Tax of only 10%.
+</p>
+<p>
+    You are given a String product, the name of a product, and an int price, the price of the product before tax. You are also given a String[] food, each element of which is the name of a food product. If the given product is an element in food, it is a food item (and thus subject to 10% tax), and otherwise, it is a non-food item (and thus subject to 18% tax). Return the price of the product after tax has been added.
+</p>
+<h2>Definition<h2><table>  <tr>    <td>Class:</td> <td>ValueAddedTax</td>  </tr>  <tr>    <td>Method:</td> <td>calculateFinalPrice</td>  </tr>  <tr>    <td>Parameters:</td> <td>String, int, String[]</td>  </tr>  <tr>    <td>Returns:</td> <td>double</td>  </tr>  <tr>    <td>Method signature:</td> <td>double calculateFinalPrice(String product, int price, String[] food)(be sure your method is public)</td>  </tr></table>
+<h2>Note</h2>
+<p>The returned value must have an absolute or relative error less than 1e-9.</p>
+<h2>Constraints</h2>
 <ul>
-  <li>warriors will contain between 2 and 50 elements, inclusive. </li>
-  <li>warriors and horses will contain the same number of elements.</li>
-  <li>Each element in warriors and in horses will be between 1 and 1000, inclusive. </li>
+    <li>product will contain between 1 and 50 characters, inclusive.</li>
+    <li>Each character in product will be a lowercase letter ('a'-'z').</li>
+    <li>price will be between 1 and 1000, inclusive.</li>
+    <li>food will contain between 1 and 50 elements, inclusive.</li>
+    <li>Each element of food will contain between 1 and 50 characters, inclusive.</li>
+    <li>Each character in each element of food will be a lowercase letter ('a'-'z').</li>
+    <li>All elements of food will be distinct.</li>
 </ul>
 <h2>Example </h2>
-<p> {5,8,4,8} </p>
-<p>{19,40,25,20}</p>
-<p>Returns: 2</p>
-<p></p>
-<p>There are four warriors and four horses for them. Bravebearts strength is warriors[0] = 5.</p>
-<p></p>
-<p>There are two valid ways to pair the warriors and horses into units. Below, each unit is presented as an ordered pair (warriors strength, horses strength). The warriors are presented in the same order as in warriors.</p>
-<p></p>
-<p>Valid assignment #1: (5,40), (8,19), (4,25), (8,20).</p>
-<p></p>
-<p>Valid assignment #2: (5,40), (8,20), (4,25), (8,19).</p>
-<p></p>
-<p>In assignment #1, the strength of Bravebearts unit is 5 * 40 = 200. The other three units have strengths 8 * 19 = 152, 4 * 25 = 100, and 8 * 20 = 160. This is a valid assignment because the number 200 is strictly greater than each of the numbers 152, 100, and 160.< /p>
+<p>milk</p>
+<p>1</p>
+<p>Returns: 1.1</p>

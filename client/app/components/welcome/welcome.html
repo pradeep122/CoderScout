@@ -1,49 +1,44 @@
 <div class="container-fluid">
-    <div class="row" ng-hide="loading">
-        <div class=" col-xs-12 col-sm-12 col-md-12 col-lg-12 ">
-            <div>
-                <div>
-                    <h3>Instructions</h3>
-                </div>
-                <ol class="collection" style="list-style-type:disc">
-                    <li class="collection-item">Please do not refresh the page while you writing the exam
-                    </li>
-                    <li class="collection-item">If this is your first time at Remote Interview, we recommend you try our sample test first to get familiar with the test environment: {{testName}}.</li>
-                    <li class="collection-item">The screening test has {{questionCount}} programming question(s).</li>
-                    <li class="collection-item">The programming questions can be solved in no programming languages.</li>
-                    <li class="collection-item">You have up to {{test.duration}} minutes to complete the test. Once you start, you should complete the test in a single attempt.</li>
-                    <li class="collection-item">Your websession will be maintained if you received the automated email invite, you can use that link to resume your test but please try not to close the window/tab during the test.</li>
-                    <li class="collection-item">Make sure that your solution handles all possible corner cases and handles large inputs efficiently. Assume nothing, trust no one.</li>
-                    <li class="collection-item">May the force be with you!</li>
-                </ol>
+    <div ng-hide="loading">
+        <ol class="list-group">
+            <li class="list-group-item">
+                <h3 class="list-group-item-heading">Instructions:</h3></li>
+            <li class="list-group-item">Please do not refresh the page while you writing the exam</li>
+            <li class="list-group-item">If this is your first time at Remote Interview, we recommend you try our sample test first to get familiar with the test environment: {{testName}}.</li>
+            <li class="list-group-item">The screening test has {{questionCount}} programming question(s).</li>
+            <li class="list-group-item">You have up to {{test.duration}} minutes to complete the test. Once you start, you should complete the test in a single attempt.</li>
+            <li class="list-group-item">The programming questions can be solved in no programming languages.</li>
+            <li class="list-group-item">You have up to {{test.duration}} minutes to complete the test. Once you start, you should complete the test in a single attempt.</li>
+            <li class="list-group-item">Your websession will be maintained if you received the automated email invite, you can use that link to resume your test but please try not to close the window/tab during the test.</li>
+            <li class="list-group-item">Make sure that your solution handles all possible corner cases and handles large inputs efficiently. Assume nothing, trust no one.</li>
+            <li class="list-group-item">May the force be with you!</li>
+        </ol>
+        <div class="panel panel-primary" style="max-width: 450px;margin: 0px auto;">
+            <div class="panel-heading">
+                <h3 class="panel-title">Applicant Registration</h3>
             </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                <div class="text-center bordertopsolid padding">
-                    <div class="form-group col-xs-4 col-xs-offset-4">
-                        <div class="input-field col s10 m10 l10">
-                            <input id="first_name" type="text" class="validate" ng-model="userDetails.firstName">
-                            <label for="first_name">First Name</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-4 col-xs-offset-4">
-                        <div class="input-field col s10 m10 l10">
-                            <input id="last_name" type="text" class="validate" ng-model="userDetails.lastName">
-                            <label for="last_name">Last Name</label>
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-4 col-xs-offset-4">
-                        <div class="input-field col s10 m10 l10">
-                            <select class="browser-default" ng-model="userDetails.test.language">
-                                <option value="" disabled selected ng-if="!userDetails.test.language">Select Language</option>
-                                <option ng-repeat="language in testLanguages" value="{{language.value}}"> {{language.name}} </option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group col-xs-4 col-xs-offset-4">
-                        <div class="text-center">
-                            <button class="waves-effect waves-light btn" ng-disabled="errorMsg" ng-click="createApplicant()">Begin Test</button>
-                        </div>
-                    </div>
+            <div class="panel-body">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" placeholder="First Name" ng-model="userDetails.firstName">
+                </div>
+                </br>
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                    <input type="text" class="form-control" placeholder="Last Name" ng-model="userDetails.lastName">
+                </div>
+                </br>
+                <div class="input-group input-group-lg">
+                    <select ng-model="userDetails.test.language" class="btn btn-default btn-lg form-control" style="width: 420px;">
+                        <option value="" disabled selected ng-if="!userDetails.test.language">Select Language</option>
+                        <option ng-repeat="language in testLanguages" value="{{language.value}}"> {{language.name}} </option>
+                    </select>
+                </div>
+                </br>
+                <div>
+                    <button class="btn btn-success btn-lg pull-right" ng-disabled="errorMsg" ng-click="createApplicant()">
+                        <span><i class="fa fa-submit"></i></span>Submit
+                    </button>
                 </div>
             </div>
         </div>

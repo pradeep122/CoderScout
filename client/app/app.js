@@ -42,6 +42,9 @@ angular.module('coderScout', [
         $urlRouterProvider
             .otherwise('/home');
 
-        $locationProvider.html5Mode(true);
+        $locationProvider.html5Mode({
+            enabled: false,
+            requireBase: false
+        });;
     })
     .controller('appCtrl', function($rootScope) {});
