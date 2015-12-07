@@ -1,12 +1,12 @@
 <div class="container-fluid">
     <div class="row">
-        <div class="col m1 s1 l1 collection" style=" border: none;">
+        <div class="col-md-1 col-sm-1 col-lg-1 collection" style=" border: none;">
             <div ng-repeat="questionObj in questions track by $index" style="border: 1px solid #e0e0e0;
     border-radius: 2px; text-align: center;">
-                <a ng-click="getQuestion(questionObj.questionId);" class="collection-item" ng-style="(currentQuestionIndex==$index) && {'background-color': '#ddd'}">{{$index + 1}}</a>
+                <a ng-click="getQuestion(questionObj.questionId);" class="collection-item btn btn-lg" ng-style="(currentQuestionIndex==$index) && {'background-color': '#ddd'}" style="width: 100%;">{{$index + 1}}</a>
             </div>
         </div>
-        <div class="col m9 s9 l9 collection">
+        <div class="col-md-9 col-lg-9 col-sm-9  collection">
             <div class="row">
                 <div ng-bind-html="currentQuestion.description"></div>
             </div>
@@ -35,25 +35,17 @@
                 </p>
             </div>
             <div class="row">
-                <div class="input-field col s12">
+                <div class="input-field col-sm-12">
                     <textarea id="textarea1" class="materialize-textarea" ng-model="currentQuestion.input"></textarea>
                     <label for="textarea1">Input</label>
                 </div>
             </div>
         </div>
-        <div class="col m2 s2 l2 collection">
-            <div class="collection-item">
-                <h5><timer interval="1000" end-time="examDuration" finish-callback="submitApplicantData()">{{hours}}: {{minutes}}: {{seconds}}</timer></h5>
-            </div>
-            <div class="collection-item ">
-                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="getQuestion(questions[currentQuestionIndex-1].questionId)" ng-disabled="currentQuestionIndex==0"><i class="material-icons left fa fa-step-backward " ></i>Previous</a>
-            </div>
-            <div class="collection-item ">
-                <a class="waves-effect waves-light btn green exam-control-btns" ng-click="getQuestion(questions[currentQuestionIndex+1].questionId)" ng-disabled="currentQuestionIndex>=questions.length-1"><i class="material-icons left fa fa-step-forward " ></i>Next</a>
-            </div>
-            <div class="collection-item ">
-                <a class="waves-effect waves-light btn blue exam-control-btns" ng-click="submitApplicantData()"><i class="material-icons left fa fa-floppy-o "></i>Submit</a>
-            </div>
+        <div class="col-md-2 col-sm-2 col-lg-2 collection">
+            <h2><timer interval="1000" end-time="examDuration" finish-callback="submitApplicantData()">{{hours}}: {{minutes}}: {{seconds}}</timer></h2>
+            <a class="btn btn-success exam-control-btns btn-lg" ng-click="getQuestion(questions[currentQuestionIndex-1].questionId)" ng-disabled="currentQuestionIndex==0"><i class="material-icons left fa fa-step-backward " ></i>Previous</a>
+            <a class="btn btn-success exam-control-btns btn-lg" ng-click="getQuestion(questions[currentQuestionIndex+1].questionId)" ng-disabled="currentQuestionIndex>=questions.length-1"><i class="material-icons left fa fa-step-forward"></i>Next</a>
+            <a class="btn btn-primary exam-control-btns btn-lg" ng-click="submitApplicantData()"><i class="material-icons left fa fa-floppy-o "></i>Submit</a>
         </div>
     </div>
 </div>

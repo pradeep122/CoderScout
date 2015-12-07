@@ -29,7 +29,7 @@
                 </div>
                 </br>
                 <div class="input-group input-group-lg">
-                    <select ng-model="userDetails.test.language" class="btn btn-default btn-lg form-control">
+                    <select ng-model="userDetails.test.language" class="btn btn-default btn-lg form-control" style="min-width:417px">
                         <option value="" disabled selected ng-if="!userDetails.test.language">Select Language</option>
                         <option ng-repeat="language in testLanguages" value="{{language.value}}"> {{language.name}} </option>
                     </select>

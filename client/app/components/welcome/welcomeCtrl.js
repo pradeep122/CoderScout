@@ -32,7 +32,7 @@ angular.module('coderScout')
                 //     language: 56
                 // }
             };
-            // checkValidityOfInvite();
+            checkValidityOfInvite();
         };
 
         var checkValidityOfInvite = function() {
